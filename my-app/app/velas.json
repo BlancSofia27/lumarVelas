@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "nombre": "Vela Aromática 1",
+    "descripcion": "Vela aromática de lavanda.",
+    "precio": 10.99,
+    "categoria": "Aromáticas",
+    "imagen": "https://d22fxaf9t8d39k.cloudfront.net/e1ca92d496d9c5c5b628abba3fd6c363a2f7e08bee5c4d306533cd49b09af402199704.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Vela Aromática 2",
+    "descripcion": "Vela aromática de rosa mosqueta.",
+    "precio": 12.99,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 3,
+    "nombre": "Vela Flotante 1",
+    "descripcion": "Vela flotante para decorar tu piscina.",
+    "precio": 8.99,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 4,
+    "nombre": "Vela Flotante 2",
+    "descripcion": "Vela flotante con aroma a vainilla.",
+    "precio": 9.99,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 5,
+    "nombre": "Vela De Soja 1",
+    "descripcion": "Vela de soja ecológica.",
+    "precio": 15.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 6,
+    "nombre": "Vela De Soja 2",
+    "descripcion": "Vela de soja con aroma a madera.",
+    "precio": 16.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 7,
+    "nombre": "Vela Aromática 3",
+    "descripcion": "Vela aromática de jazmín.",
+    "precio": 11.99,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 8,
+    "nombre": "Vela Aromática 4",
+    "descripcion": "Vela aromática de coco.",
+    "precio": 13.99,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 9,
+    "nombre": "Vela Flotante 3",
+    "descripcion": "Vela flotante en forma de flor.",
+    "precio": 10.99,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 10,
+    "nombre": "Vela Flotante 4",
+    "descripcion": "Vela flotante en forma de estrella.",
+    "precio": 11.99,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 11,
+    "nombre": "Vela De Soja 3",
+    "descripcion": "Vela de soja con aroma a naranja.",
+    "precio": 17.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 12,
+    "nombre": "Vela De Soja 4",
+    "descripcion": "Vela de soja en tarro de cristal.",
+    "precio": 18.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 13,
+    "nombre": "Vela Aromática 5",
+    "descripcion": "Vela aromática de canela.",
+    "precio": 12.99,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 14,
+    "nombre": "Vela Aromática 6",
+    "descripcion": "Vela aromática de manzana.",
+    "precio": 14.99,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 15,
+    "nombre": "Vela Flotante 5",
+    "descripcion": "Vela flotante de forma circular.",
+    "precio": 9.99,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 16,
+    "nombre": "Vela Flotante 6",
+    "descripcion": "Vela flotante en forma de corazón.",
+    "precio": 10.99,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 17,
+    "nombre": "Vela De Soja 5",
+    "descripcion": "Vela de soja con aroma a lavanda.",
+    "precio": 16.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 18,
+    "nombre": "Vela De Soja 6",
+    "descripcion": "Vela de soja aromática de vainilla.",
+    "precio": 17.49,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 19,
+    "nombre": "Vela Aromática 7",
+    "descripcion": "Vela aromática de limón.",
+    "precio": 11.49,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 20,
+    "nombre": "Vela Aromática 8",
+    "descripcion": "Vela aromática de sándalo.",
+    "precio": 13.49,
+    "categoria": "Aromáticas",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 21,
+    "nombre": "Vela Flotante 7",
+    "descripcion": "Vela flotante en forma de vela tradicional.",
+    "precio": 8.49,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 22,
+    "nombre": "Vela Flotante 8",
+    "descripcion": "Vela flotante con aroma floral.",
+    "precio": 9.49,
+    "categoria": "Flotantes",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 23,
+    "nombre": "Vela De Soja 7",
+    "descripcion": "Vela de soja ecológica con aroma a rosa.",
+    "precio": 19.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  },
+  {
+    "id": 24,
+    "nombre": "Vela De Soja 8",
+    "descripcion": "Vela de soja con aroma a miel.",
+    "precio": 20.99,
+    "categoria": "De Soja",
+    "imagen": "https://via.placeholder.com/500x500.png?text=500x500px"
+  }
+]
