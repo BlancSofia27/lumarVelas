@@ -9,7 +9,7 @@ const ItemsMenuMobile =()=>{
            <Menu/>
         </PopoverTrigger>
         <PopoverContent>
-            <Link href="/productos" className="block">Productos</Link>
+            <Link href="/products" className="block">Productos</Link>
             <Link href="/nosotros" className="block">Sobre Nosotros</Link>
             <Link href="/contacto" className="block">Contacto</Link>
 

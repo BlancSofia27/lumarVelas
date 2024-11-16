@@ -1,33 +1,59 @@
+"use client";
 import Image from "next/image";
-import heart from "../public/iconHeart.png";
-import leaf from "../public/iconLeaf.png";
-import aroma from "../public/iconAroma.png";
+
 import { FC } from "react";
+import { motion } from "framer-motion"; // Importamos motion para las animaciones
 
 const Info: FC = () => {
   return (
-    <div className="flex flex-col sm:flex-row w-full h-auto justify-center items-center bg-white text-black p-4 space-y-4 sm:space-y-0 sm:space-x-4">
-      <div className="flex items-center w-full sm:w-[360px] h-[200px]">
-        <Image src={aroma} alt="Aroma Icon" className="w-20 h-20 p-4" />
-        <h2 className="font-bold">Calidad de los aromas</h2>
-        <p className="text-justify px-2">
-         Nuestras velas handmade están creadas con fragancias de alta calidad que llenan tu espacio con aromas envolventes y duraderos.
-        </p>
-      </div>
-      <div className="flex items-center w-full sm:w-[360px] h-[200px]">
-        <Image src={heart} alt="Heart Icon" className="w-20 h-20 p-4" />
-        <h2 className="font-bold">Proceso de creación</h2>
-        <p className="text-justify px-2">
-        Cada vela es elaborada a mano con cuidado y dedicación, utilizando cera natural y mechas de algodón, lo que asegura una combustión limpia y segura.
-        </p>
-      </div>
-      <div className="flex items-center w-full sm:w-[360px] h-[200px]">
-        <Image src={leaf} alt="Leaf Icon" className="w-20 h-20 p-4" />
-        <h2 className="font-bold">Sustentabilidad</h2>
-        <p className="text-justify px-2">
-         Nos comprometemos con el medio ambiente, utilizando materiales eco-amigables en todo el proceso de producción.
-        </p>
-      </div>
+    <div className="flex flex-col sm:flex-row w-full h-auto justify-center items-center bg-gris text-black p-4 space-y-4 sm:space-y-0 sm:space-x-4">
+      {/* Primer Div Animado */}
+      <motion.div
+        className="flex items-center w-full sm:w-[360px] h-[200px]"
+        initial={{ x: -200, opacity: 0 }} // Comienza a la izquierda fuera de la pantalla
+        animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
+        transition={{ duration: 1, delay: 1 }} // Retraso de 1 segundo
+      >
+        <Image src="./iconAroma.png" alt="Aroma Icon" className="w-20 h-20 p-4  " width={20} height={20} />
+        <div className="flex flex-col">
+          <h2 className="font-bold">Calidad de los aromas</h2>
+          <p className="text-justify px-2">
+            Fragancias de alta calidad que llenan tu espacio con aromas duraderos.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Segundo Div Animado */}
+      <motion.div
+        className="flex items-center w-full sm:w-[360px] h-[200px]"
+        initial={{ x: -200, opacity: 0 }} // Comienza a la izquierda fuera de la pantalla
+        animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
+        transition={{ duration: 1, delay: 1.2 }} // Retraso de 1.2 segundos
+      >
+        <Image src="./iconHeart.png" alt="Heart Icon" className="w-20 h-20 p-4 " width={20} height={20} />
+        <div className="flex flex-col">
+          <h2 className="font-bold">Proceso de creación</h2>
+          <p className="text-justify px-2">
+            Cada vela es elaborada a mano con cuidado y dedicación.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Tercer Div Animado */}
+      <motion.div
+        className="flex items-center w-full sm:w-[360px] h-[200px]"
+        initial={{ x: -200, opacity: 0 }} // Comienza a la izquierda fuera de la pantalla
+        animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
+        transition={{ duration: 1, delay: 1.4 }} // Retraso de 1.4 segundos
+      >
+        <Image src="./iconLeaf.png" alt="Leaf Icon" className="w-20 h-20 p-4 "  width={20} height={20}/>
+        <div className="flex flex-col">
+          <h2 className="font-bold">Sustentabilidad</h2>
+          <p className="text-justify px-2">
+            Usamos materiales eco-amigables en todo el proceso de producción.
+          </p>
+        </div>
+      </motion.div>
     </div>
   );
 };

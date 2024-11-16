@@ -1,31 +1,25 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import header1 from "../public/header1.jpg";
-import header from "../public/header.jpg";
-import header3 from "../public/header3.jpg";
-
-
-  
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 // Array of images
-const images = [header1, header, header3];
+const images = ["/header1", "/header", "/header3"]
 
 const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   // Change image every 4 seconds, or pause on hover
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused) return
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }, 4000)
 
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    return () => clearInterval(interval)
+  }, [isPaused])
 
   return (
     <div
@@ -67,7 +61,7 @@ const Carousel = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Carousel;
+export default Carousel

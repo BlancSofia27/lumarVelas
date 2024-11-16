@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import {Urbanist} from "next/font/google";
+import {Poppins} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/footer";
@@ -11,7 +11,11 @@ import ReduxProvider from "@/components/ReduxProvider";
 
 
 
-const urbanist = Urbanist({subsets:["latin"]})
+const poppins = Poppins({
+  subsets: ['latin'], // Especifica el subconjunto que necesitas
+  weight: ['400', '700'], // Opcional: especifica los pesos que necesitas
+  preload: true, // Mantén el preloading si lo necesitas
+});
  
 
 export const metadata: Metadata = {
@@ -26,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>
+      <body className={poppins.className}>
         <ReduxProvider >
         <Navbar/>
         <ToastContainer position="bottom-right" />

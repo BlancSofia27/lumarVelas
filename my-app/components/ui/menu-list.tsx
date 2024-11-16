@@ -18,39 +18,39 @@ import { SparkleIcon } from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Vainilla",
+    href: "/products/vainilla",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Una fragancia dulce y reconfortante que llena tus espacios de calidez.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Florales",
+    href: "/products/florales",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Aromas inspirados en flores frescas para crear ambientes delicados y relajantes.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Tropicales",
+    href: "/products/tropicales",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Fragancias exóticas que evocan la frescura de la naturaleza tropical.",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "Cítricas",
+    href: "/products/citricas",
+    description: "Aromas refrescantes perfectos para revitalizar tus espacios.",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
+    title: "Maderas",
+    href: "/products/maderas",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "Esencias cálidas y terrosas que aportan elegancia y sofisticación a cualquier ambiente.",
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
+    title: "Frutales",
+    href: "/products/frutales",
     description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Aromas jugosos y dulces que llenan tus espacios de frescura y alegría.",
   },
 ]
 
@@ -64,44 +64,45 @@ const MenuList = () => {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/products"
                   >
                     {/* <Icons.logo className="h-6 w-6" /> */}
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      <SparkleIcon/>
+                      <SparkleIcon />
                       Todas nuestras velas
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                      Descubre nuestra exclusiva colección de velas, donde
+                      diseño, calidad y versatilidad se combinan.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/products/aromaticas" title="Aromaticas">
-                Re-usable components built using Radix UI and Tailwind CSS.
+                Diseñadas para llenar tus espacios con agradables fragancias.
               </ListItem>
-              <ListItem href="/products/de-soja" title="Veganas">
-                How to install dependencies and structure your app.
+              <ListItem href="/products/vegan" title="Veganas">
+                Libres de productos de origen animal y perfectas para un estilo
+                de vida consciente.
               </ListItem>
               <ListItem href="/products/flotantes" title="Flotantes">
-                Styles for headings, paragraphs, lists...etc
+                Velas decorativas que flotan en agua, ideales para eventos
+                especiales.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Aromas</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
-                  href={component.href}
+                  // href={component.href}
                 >
                   {component.description}
                 </ListItem>
@@ -110,9 +111,9 @@ const MenuList = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/nosotros" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Sobre Nosotros
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
