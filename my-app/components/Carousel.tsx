@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 
 // Array of images
-const images = ["/header1", "/header", "/header3"]
+const images = ["/header1.png", "/header.jpg", "/header3.jpg"]
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
