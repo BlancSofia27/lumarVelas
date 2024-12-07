@@ -1,37 +1,36 @@
-"use client";
-import { useState, useEffect } from "react";
-import { Heart, ShoppingCart, User } from "lucide-react";
-import { useRouter } from "next/navigation";
-import MenuList from "./menu-list";
-import ItemsMenuMobile from "./Items-menu-mobile";
-import CartSidebar from "../CartSideBar"; // Importa el sidebar del carrito
-import logo from "../../public/lumarCo.png";
-import Image from "next/image";
+"use client"
+import { useState, useEffect } from "react"
+import { Heart, ShoppingCart, User } from "lucide-react"
+import { useRouter } from "next/navigation"
+import MenuList from "./menu-list"
+import ItemsMenuMobile from "./Items-menu-mobile"
+import CartSidebar from "../CartSideBar" // Importa el sidebar del carrito
+import Image from "next/image"
 
 const Navbar = () => {
-  const router = useRouter();
-  const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el sidebar
-  const [isScrolled, setIsScrolled] = useState(false); // Estado para el scroll
-  const [logoSize, setLogoSize] = useState(200); // Tamaño del logo
+  const router = useRouter()
+  const [isCartOpen, setIsCartOpen] = useState(false) // Estado para controlar el sidebar
+  const [isScrolled, setIsScrolled] = useState(false) // Estado para el scroll
+  const [logoSize, setLogoSize] = useState(200) // Tamaño del logo
 
   // Detecta cuando el usuario hace scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setIsScrolled(true);
-        setLogoSize(150); // Reducir el tamaño del logo
+        setIsScrolled(true)
+        setLogoSize(150) // Reducir el tamaño del logo
       } else {
-        setIsScrolled(false);
-        setLogoSize(200); // Tamaño original del logo
+        setIsScrolled(false)
+        setLogoSize(200) // Tamaño original del logo
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   return (
     <div
@@ -39,10 +38,10 @@ const Navbar = () => {
         isScrolled ? "bg-negro shadow-md p-0" : "bg-transparent "
       }`}
     >
-      <div className="flex items-center justify-between px-4 py-2 w-full cursor-pointer">
+      <div className="flex items-center justify-between px-4 py-5 w-full cursor-pointer">
         <h1 onClick={() => router.push("/")}>
           <Image
-            src={logo}
+            src="/lumarWhiteNuevo.png"
             alt="lumar.co velas artesanales"
             width={logoSize}
             height={100}
@@ -64,12 +63,12 @@ const Navbar = () => {
           <Heart
             strokeWidth={1}
             className="cursor-pointer"
-            onClick={() => router.push("/loved-products")}
+            onClick={() => router.push("/products/loved-products")}
           />
           <User
             strokeWidth={1}
             className="cursor-pointer"
-            onClick={() => router.push("/profile")}
+            onClick={() => router.push("/adminPanel")}
           />
         </div>
       </div>
@@ -77,7 +76,7 @@ const Navbar = () => {
       {/* Sidebar del carrito */}
       <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -2,9 +2,10 @@
 
 import * as React from "react"
 import Link from "next/link"
-
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 //import { Icons } from "@/components/icons"
+import "./ui.css"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -60,12 +61,12 @@ const MenuList = () => {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Productos</NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="bg-black bg-opacity-85">
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="hover: bg-gris">
                   <Link
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md bg-zinc-300 bg-opacity-60 hover:bg-zinc-400"
                     href="/products"
                   >
                     {/* <Icons.logo className="h-6 w-6" /> */}
@@ -80,14 +81,26 @@ const MenuList = () => {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/products/aromaticas" title="Aromaticas">
+              <ListItem
+                href="/products/aromaticas"
+                title="Aromaticas"
+                className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
+              >
                 Diseñadas para llenar tus espacios con agradables fragancias.
               </ListItem>
-              <ListItem href="/products/vegan" title="Veganas">
+              <ListItem
+                href="/products/vegan"
+                title="Veganas"
+                className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
+              >
                 Libres de productos de origen animal y perfectas para un estilo
                 de vida consciente.
               </ListItem>
-              <ListItem href="/products/flotantes" title="Flotantes">
+              <ListItem
+                href="/products/flotantes"
+                title="Flotantes"
+                className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
+              >
                 Velas decorativas que flotan en agua, ideales para eventos
                 especiales.
               </ListItem>
@@ -97,11 +110,12 @@ const MenuList = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Aromas</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-black bg-opacity-85">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
+                  className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
                   // href={component.href}
                 >
                   {component.description}
@@ -111,10 +125,25 @@ const MenuList = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/nosotros" legacyBehavior passHref>
+          <Link href="/sobreNosotros" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Sobre Nosotros
             </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/lumarClub" legacyBehavior passHref>
+            <button className="btn">
+              <Image
+                src="/lumarClub.png"
+                alt="lumar.co velas artesanales"
+                width={90}
+                height={90}
+                className="btn-text-one transition-all duration-300 p-3"
+              />
+
+              <span className="btn-text-two">Quiero unirme!</span>
+            </button>
           </Link>
         </NavigationMenuItem>
       </NavigationMenuList>

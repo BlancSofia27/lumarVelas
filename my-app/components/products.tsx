@@ -3,12 +3,11 @@
 import velas from "@/app/velas.json";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Vela } from "@/types/product";
+import { Heart } from "lucide-react"; // Ícono de corazón de Lucide
+import { Product } from "@/types/product";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "@/store/cartSlice";
 import { toast } from "react-toastify";
-
-import { Heart } from "lucide-react"; // Ícono de corazón de Lucide
 
 interface VelasGridProps {
   filters?: {
@@ -51,7 +50,7 @@ const VelasGrid: React.FC<VelasGridProps> = ({ filters = {} }) => {
   // };
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-zinc-900">
       {filteredVelas.map((vela: Vela) => (
         <Skeleton key={vela.id} className="bg-white" title={vela.nombre}>
           <div className="relative flex flex-col items-center cursor-pointer">

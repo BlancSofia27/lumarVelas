@@ -1,22 +1,17 @@
-
 import type { Metadata } from "next";
-import {Poppins} from "next/font/google";
+import { Montserrat } from "next/font/google"; // Cambiar a Montserrat
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReduxProvider from "@/components/ReduxProvider";
 
-
-
-const poppins = Poppins({
+// Importar Montserrat desde Google Fonts
+const montserrat = Montserrat({
   subsets: ['latin'], // Especifica el subconjunto que necesitas
-  weight: ['400', '700'], // Opcional: especifica los pesos que necesitas
+  weight: ['400', '500', '600', '700'], // Puedes agregar más pesos según sea necesario
   preload: true, // Mantén el preloading si lo necesitas
 });
- 
 
 export const metadata: Metadata = {
   title: "Lumar.CO-Velas Homemade",
@@ -30,12 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
-        <ReduxProvider >
-        <Navbar/>
-        <ToastContainer position="bottom-right" />
-        {children}
-        <Footer/>
+      <body className={montserrat.className}>  {/* Aplica Montserrat */}
+        <ReduxProvider>
+          <ToastContainer position="bottom-right" />
+          {children}
         </ReduxProvider>
       </body>
     </html>

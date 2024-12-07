@@ -1,0 +1,47 @@
+/* From Uiverse.io by mobinkakei */ 
+.btn {
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(to top, #d1d1d1, #d3d3d3, #ffffff);
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    margin:0px 0px 0px 30px;
+  }
+  
+  .btn span {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: top 0.5s;
+  }
+  
+  .btn-text-one {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .btn-text-two {
+    position: absolute;
+    width: 100%;
+    top: 150%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .btn:hover .btn-text-one {
+    top: -100%;
+  }
+  
+  .btn:hover .btn-text-two {
+    top: 50%;
+  }
+  

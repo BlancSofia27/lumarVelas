@@ -1,9 +1,8 @@
-export type Vela ={
-    id: number;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  categoria: string;
-  imagen: string;
-
-    }
+export type Product = {
+  image: string;
+  name: string;
+  category: string;
+  price: number;
+  sold: number;
+  profit: number;
+};

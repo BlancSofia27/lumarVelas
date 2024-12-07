@@ -1,5 +1,11 @@
 {
   "/page": "app/page.js",
+  "/sobreNosotros/page": "app/sobreNosotros/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/lumarClub/page": "app/lumarClub/page.js",
+  "/products/page": "app/products/page.js",
+  "/adminPanel/page": "app/adminPanel/page.js",
+  "/products/aromaticas/page": "app/products/aromaticas/page.js",
+  "/products/loved-products/page": "app/products/loved-products/page.js"
 }

@@ -14,6 +14,9 @@ const config: Config = {
 			gris:'#d1d1d1',
 			verde:'#747f69',
 			marron:'#737373',
+			completa:'#28a745',
+			pendiente:'#ffc107',
+			cancelada:'#dc3545',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

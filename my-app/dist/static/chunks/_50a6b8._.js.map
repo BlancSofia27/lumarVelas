@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/blanc/Desktop/lumarVelas/my-app/components/common/Loader/index.tsx"],"sourcesContent":["const Loader = () => {\n  return (\n    <div className=\"flex h-screen items-center justify-center bg-white dark:bg-black\">\n      <div className=\"h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent\"></div>\n    </div>\n  );\n};\n\nexport default Loader;\n"],"names":[],"mappings":";;;;;AAAA,MAAM,SAAS;IACb,qBACE,6LAAC;QAAI,WAAU;kBACb,cAAA,6LAAC;YAAI,WAAU;;;;;;;;;;;AAGrB;KANM;uCAQS"}},
+    {"offset": {"line": 35, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

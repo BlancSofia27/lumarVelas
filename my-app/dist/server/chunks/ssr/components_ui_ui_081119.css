@@ -1,0 +1,49 @@
+/* [project]/components/ui/ui.css [app-client] (css) */
+.btn {
+  width: 140px;
+  height: 50px;
+  background: linear-gradient(to top, #d1d1d1, #d3d3d3, #fff);
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 5px 5px #00000080;
+  overflow: hidden;
+  margin: 0 0 0 30px;
+}
+
+.btn span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top .5s;
+}
+
+.btn-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn:hover .btn-text-one {
+  top: -100%;
+}
+
+.btn:hover .btn-text-two {
+  top: 50%;
+}
+
+
+/*# sourceMappingURL=components_ui_ui_081119.css.map*/

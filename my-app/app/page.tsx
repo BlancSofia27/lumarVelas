@@ -2,10 +2,13 @@ import CarouselImage from "@/components/CarouselImage";
 import CarouselText from "@/components/CarouselText";
 import Hero from "@/components/Hero";
 import Info from "@/components/Info";
+import Footer from "@/components/ui/footer";
+import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
   return (
     <main>
+      <Navbar/>
       <CarouselText />
       <Hero />
       <Info />
@@ -20,6 +23,7 @@ export default function Home() {
           className="w-full h-[500px]"
         />
       </div>
+      <Footer/>
     </main>
   );
 }
