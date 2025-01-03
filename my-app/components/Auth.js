@@ -26,7 +26,7 @@ export default function Auth() {
     setSuccess(false)
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
       })
@@ -38,7 +38,7 @@ export default function Auth() {
         alert("Registro exitoso. Por favor, verifica tu correo electrónico.")
       }
     } catch (err) {
-      setError("Hubo un error al registrar. Intenta de nuevo.")
+      setError("Hubo un error al registrar. Intenta de nuevo.",err)
     } finally {
       setLoading(false)
     }

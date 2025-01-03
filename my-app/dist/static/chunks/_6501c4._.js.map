@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 12, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/blanc/Desktop/lumarVelas/my-app/components/ui/skeleton.tsx"],"sourcesContent":["import { cn } from \"@/lib/utils\"\n\nfunction Skeleton({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\" rounded-md bg-muted\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n"],"names":[],"mappings":";;;;AAAA;;;AAEA,SAAS,SAAS,EAChB,SAAS,EACT,GAAG,OACkC;IACrC,qBACE,6LAAC;QACC,WAAW,CAAA,GAAA,+GAAA,CAAA,KAAE,AAAD,EAAE,wBAAwB;QACrC,GAAG,KAAK;;;;;;AAGf;KAVS"}},
-    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

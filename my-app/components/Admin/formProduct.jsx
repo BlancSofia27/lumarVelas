@@ -86,7 +86,7 @@ const ProductForm = () => {
       });
 
       // Guardar el producto en la base de datos de Supabase
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("products")
         .insert([{
           name, 
