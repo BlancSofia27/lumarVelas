@@ -1,9 +1,19 @@
 "use client";
+
 import { useParams } from "next/navigation"; // Importa useParams de next/navigation
 import { useEffect, useState } from "react";
-import velas from "@/app/velas.json"; // Asumiendo que tienes el archivo velas.json
-import { Vela } from "@/types/product";
+import velas from "@/app/velas.json"; // Asegúrate de que la ruta sea correcta para tu archivo JSON
+
 import Image from "next/image";
+
+// Definimos el tipo de datos para las velas
+interface Vela {
+  id: number;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  imagen: string;
+}
 
 const ProductDetail = () => {
   const { id } = useParams(); // Obtén el parámetro 'id' de la URL

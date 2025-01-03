@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google"; // Cambiar a Montserrat
+import { Montserrat } from "next/font/google"; 
 import "./globals.css";
-
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReduxProvider from "@/components/ReduxProvider";
 
-// Importar Montserrat desde Google Fonts
 const montserrat = Montserrat({
-  subsets: ['latin'], // Especifica el subconjunto que necesitas
-  weight: ['400', '500', '600', '700'], // Puedes agregar más pesos según sea necesario
-  preload: true, // Mantén el preloading si lo necesitas
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: "Lumar.CO-Velas Homemade",
   description: "Aromas y velas",
+  icons: {
+    icon: "/favicon.png", // Especificamos la ruta al favicon
+  },
 };
 
 export default function RootLayout({
@@ -25,10 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>  {/* Aplica Montserrat */}
+      <body className={montserrat.className}>
         <ReduxProvider>
-          <ToastContainer position="bottom-right" />
-          {children}
+          <main>{children}</main>
         </ReduxProvider>
       </body>
     </html>

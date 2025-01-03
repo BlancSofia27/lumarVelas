@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 //import { Icons } from "@/components/icons"
 import "./ui.css"
@@ -19,39 +18,28 @@ import { SparkleIcon } from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Vainilla",
-    href: "/products/vainilla",
+    title: "Citronella",
+    href: "/products/citronella",
     description:
-      "Una fragancia dulce y reconfortante que llena tus espacios de calidez.",
+      "Ideal para repeler insectos y aportar un aire limpio y natural.",
   },
   {
-    title: "Florales",
-    href: "/products/florales",
+    title: "Coco Vainilla",
+    href: "/products/coco-vainilla",
     description:
-      "Aromas inspirados en flores frescas para crear ambientes delicados y relajantes.",
+      "Una mezcla suave y dulce que crea un ambiente cálido.",
   },
   {
-    title: "Tropicales",
-    href: "/products/tropicales",
+    title: "Sándalo",
+    href: "/products/sandalo",
     description:
-      "Fragancias exóticas que evocan la frescura de la naturaleza tropical.",
+      "Una fragancia profunda y terrosa con notas amaderadas.",
   },
   {
-    title: "Cítricas",
-    href: "/products/citricas",
-    description: "Aromas refrescantes perfectos para revitalizar tus espacios.",
-  },
-  {
-    title: "Maderas",
-    href: "/products/maderas",
+    title: "Verbena",
+    href: "/products/verbena",
     description:
-      "Esencias cálidas y terrosas que aportan elegancia y sofisticación a cualquier ambiente.",
-  },
-  {
-    title: "Frutales",
-    href: "/products/frutales",
-    description:
-      "Aromas jugosos y dulces que llenan tus espacios de frescura y alegría.",
+      "Aroma refrescante, ideal para purificar cualquier espacio.",
   },
 ]
 
@@ -67,7 +55,7 @@ const MenuList = () => {
                 <NavigationMenuLink asChild className="hover: bg-gris">
                   <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md bg-zinc-300 bg-opacity-60 hover:bg-zinc-400"
-                    href="/products"
+                    href="/user/products"
                   >
                     {/* <Icons.logo className="h-6 w-6" /> */}
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -82,25 +70,28 @@ const MenuList = () => {
                 </NavigationMenuLink>
               </li>
               <ListItem
-                href="/products/aromaticas"
+                
                 title="Aromaticas"
                 className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
               >
+                 <div className="bg-zinc-400">Proximamente</div>
                 Diseñadas para llenar tus espacios con agradables fragancias.
               </ListItem>
               <ListItem
-                href="/products/vegan"
+                
                 title="Veganas"
                 className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
               >
+                 <div className="bg-zinc-400">Proximamente</div>
                 Libres de productos de origen animal y perfectas para un estilo
                 de vida consciente.
               </ListItem>
               <ListItem
-                href="/products/flotantes"
+                
                 title="Flotantes"
                 className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
               >
+                 <div className="bg-zinc-400">Proximamente</div>
                 Velas decorativas que flotan en agua, ideales para eventos
                 especiales.
               </ListItem>
@@ -113,11 +104,12 @@ const MenuList = () => {
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-black bg-opacity-85">
               {components.map((component) => (
                 <ListItem
-                  key={component.title}
-                  title={component.title}
-                  className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
-                  // href={component.href}
+                key={component.title}
+                title={component.title}
+                className="bg-zinc-800 bg-opacity-60 hover:bg-zinc-400"
+                // href={component.href}
                 >
+               
                   {component.description}
                 </ListItem>
               ))}
@@ -125,26 +117,13 @@ const MenuList = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/sobreNosotros" legacyBehavior passHref>
+          <Link href="/user/sobreNosotros" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Sobre Nosotros
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/lumarClub" legacyBehavior passHref>
-            <button className="btn">
-              <Image
-                src="/lumarClub.png"
-                alt="lumar.co velas artesanales"
-                width={90}
-                height={90}
-                className="btn-text-one transition-all duration-300 p-3"
-              />
-
-              <span className="btn-text-two">Quiero unirme!</span>
-            </button>
-          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

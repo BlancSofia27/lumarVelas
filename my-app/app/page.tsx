@@ -8,9 +8,9 @@ import Navbar from "@/components/ui/Navbar";
 export default function Home() {
   return (
     <main>
-      <Navbar/>
       <CarouselText />
       <Hero />
+      <Navbar/>
       <Info />
       <CarouselImage/>
       <div className="relative w-full h-auto">

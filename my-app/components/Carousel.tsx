@@ -4,14 +4,31 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 
-// Array of images
-const images = ["/header1.png", "/header.jpg", "/header3.jpg"]
+const images = [
+  {
+    src: "/header1.png",
+    title: "Disfruta de Promociones Exclusivas",
+    text: "Hasta 70% OFF en la segunda unidad\n3 cuotas sin interés en nuestras velas handmade.",
+    position: "left-10 text-left ",
+  },
+  {
+    src: "/header.jpg",
+    title: "Velas Artesanales que Inspiran",
+    text: "Cada vela de Lumar Club está diseñada\npara crear ambientes cálidos y únicos.",
+    position: "left-1/2 -translate-x-1/2 text-center",
+  },
+  {
+    src: "/header3.jpg",
+    title: "Lumar Club: Más que Velas",
+    text: "Forma parte de nuestra comunidad\npromociones exclusivas y ediciones limitadas.",
+    position: "right-10 text-right",
+  },
+]
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
 
-  // Change image every 4 seconds, or pause on hover
   useEffect(() => {
     if (isPaused) return
     const interval = setInterval(() => {
@@ -30,22 +47,38 @@ const Carousel = () => {
       {/* Image animation with framer-motion */}
       <AnimatePresence>
         <motion.div
-          key={currentIndex} // Changes key to apply exit and enter animations
+          key={currentIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }} // Adjust animation duration
+          transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
           <Image
-            src={images[currentIndex]} // Current image
+            src={images[currentIndex].src}
             alt={`header ${currentIndex + 1}`}
-            layout="fill" // Fits the image to the container
-            objectFit="cover" // Maintains aspect ratio and covers the container
+            layout="fill" // Hace que la imagen llene todo el contenedor
+            objectFit="cover" // Asegura que la imagen mantenga su proporción y cubra el espacio
+            quality={100} // Aumenta la calidad de la imagen para evitar pixelación
             className="object-cover w-full h-full"
           />
         </motion.div>
       </AnimatePresence>
+
+      {/* Text for the current image */}
+      <div
+        className={`absolute top-1/2 transform -translate-y-1/2 text-white p-7 rounded ${images[currentIndex].position}`}
+      >
+        <div className="flex flex-col space-y-2">
+          <h1 className="text-xl font-bold">{images[currentIndex].title}</h1>
+          <h3 className="text-lg whitespace-pre-line">
+            {images[currentIndex].text}
+          </h3>
+        </div>
+        <button className="text-center text-sm mt-4 py-2 w-[200px] bg-white text-black font-medium rounded hover:bg-gray-200 transition-all duration-300">
+          Más información
+        </button>
+      </div>
 
       {/* Navigation dots below the carousel */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">

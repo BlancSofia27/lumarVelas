@@ -1,17 +1,17 @@
 /* From Uiverse.io by mobinkakei */ 
 .btn {
     width: 140px;
-    height: 50px;
-    background: linear-gradient(to top, #d1d1d1, #d3d3d3, #ffffff);
+    height: 35px;
+    /* background: linear-gradient(to top, #d1d1d1, #d3d3d3, #ffffff); */
     color: #fff;
     border-radius: 50px;
     border: none;
     outline: none;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); */
     overflow: hidden;
-    margin:0px 0px 0px 30px;
+    margin:9px 0px 0px 30px;
   }
   
   .btn span {

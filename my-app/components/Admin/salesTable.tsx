@@ -116,7 +116,7 @@ const SalesTable = () => {
         <DataGrid
           rows={filteredRows}
           columns={columns}
-          pageSize={5}
+         
           checkboxSelection
           sx={{
             "& .MuiDataGrid-cell": {

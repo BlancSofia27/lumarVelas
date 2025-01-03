@@ -5,6 +5,8 @@ import { HardHat } from "lucide-react"; // Ícono de construcción de Lucide
 
 export default function NotFound() {
   return (
+    <>
+      <div className="bg-verde h-[130px] w-full"></div>
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-center">
     <HardHat className="w-20 h-20 text-verde mb-6" />
     <h1 className="text-3xl font-bold text-gray-800">
@@ -17,6 +19,7 @@ export default function NotFound() {
       Regresar al inicio
     </Link>
   </div>
+  </>
   )
 }
 

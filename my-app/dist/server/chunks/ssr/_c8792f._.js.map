@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/components/common/Loader/index.tsx"],"sourcesContent":["const Loader = () => {\n  return (\n    <div className=\"flex h-screen items-center justify-center bg-white dark:bg-black\">\n      <div className=\"h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent\"></div>\n    </div>\n  );\n};\n\nexport default Loader;\n"],"names":[],"mappings":";;;;;AAAA,MAAM,SAAS;IACb,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAI,WAAU;;;;;;;;;;;AAGrB;uCAEe"}},
-    {"offset": {"line": 29, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

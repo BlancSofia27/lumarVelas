@@ -28,6 +28,6 @@
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "dist/types/**/*.ts"
-  ],
+, ".next/types/app/adminPanel/page.tsx", "components/Admin/formProduct.jsx", "app/adminPanel/productos/page.jsx", "components/products.jsx", "components/CartSideBar.jsx"  ],
   "exclude": ["node_modules"]
 }

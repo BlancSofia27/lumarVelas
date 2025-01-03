@@ -1,15 +1,16 @@
 {
   "pages": {
     "/adminPanel/page": [
-      "static/chunks/_2b2515._.js",
-      "static/chunks/app_favicon_ico_mjs_cd4250._.js",
-      "static/chunks/[root of the server]__3c3d9f._.css",
-      "static/chunks/node_modules_fc92a8._.js",
+      "static/chunks/[root of the server]__8ef86b._.css",
+      "static/chunks/node_modules_e88819._.js",
       "static/chunks/_a3479d._.js",
       "static/chunks/app_layout_tsx_202b73._.js",
-      "static/chunks/node_modules_b5beb1._.js",
-      "static/chunks/app_adminPanel_page_tsx_735665._.js",
-      "static/chunks/app_adminPanel_page_tsx_c706d2._.js",
+      "static/chunks/node_modules_next_ab28b3._.js",
+      "static/chunks/node_modules_@mui_material_87c7b6._.js",
+      "static/chunks/node_modules_@mui_system_esm_5e56f4._.js",
+      "static/chunks/node_modules_a25bc4._.js",
+      "static/chunks/_56785e._.js",
+      "static/chunks/app_adminPanel_layout_tsx_db5a17._.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
       "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
       "static/chunks/node_modules_next_dist_client_34bfc0._.js",

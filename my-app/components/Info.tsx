@@ -34,7 +34,7 @@ const Info: FC = () => {
         <div className="flex flex-col">
           <h2 className="font-bold">Proceso de creación</h2>
           <p className="text-justify px-2">
-            Cada vela es elaborada a mano con cuidado y dedicación.
+            Cada vela es elaborada a mano con cuidado y dedicación para lograr su durabilidad.
           </p>
         </div>
       </motion.div>

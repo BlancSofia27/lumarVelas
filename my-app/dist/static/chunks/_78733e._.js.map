@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/blanc/Desktop/lumarVelas/my-app/utils/supabaseClient.js"],"sourcesContent":["import { createClient } from '@supabase/supabase-js';\r\n\r\nconst supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;\r\nconst supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_ANON_KEY;\r\n\r\n\r\nif (!supabaseUrl || !supabaseKey) {\r\n  throw new Error('Supabase URL and Key are required');\r\n}\r\n\r\nexport const supabase = createClient(supabaseUrl, supabaseKey);\r\n"],"names":[],"mappings":";;;AAEoB;AAFpB;;AAEA,MAAM;AACN,MAAM;AAGN,uCAAkC;;AAElC;AAEO,MAAM,WAAW,CAAA,GAAA,0LAAA,CAAA,eAAY,AAAD,EAAE,aAAa"}},
+    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
