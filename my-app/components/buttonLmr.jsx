@@ -31,18 +31,18 @@ export default function JoinButton() {
   };
 
   // Manejar el click en "Lumar Club"
-  const handleLumarClubClick = (e) => {
-    if (!isAuthenticated) {
-      e.preventDefault(); // Evitar la redirección
-      toggleAuthModal();
-    }
-  };
+  // const handleLumarClubClick = (e) => {
+  //   if (!isAuthenticated) {
+  //     e.preventDefault(); // Evitar la redirección
+  //     toggleAuthModal();
+  //   }
+  // };
 
   return (
     <div className="flex items-center space-x-4">
       {/* Botón Lumar Club */}
       <Link href="/user/lumarclub" legacyBehavior passHref>
-        <button className="btn" onClick={handleLumarClubClick}>
+        <button className="btn" >
           <Image
             src="/lumarClub.png"
             alt="lumar.co velas artesanales"

@@ -6,8 +6,11 @@ export default function LumarClub() {
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center ">
       <div className="bg-verde h-[130px] w-full"></div>
       <header className="text-center mb-8 ">
-        <h1 className="text-4xl font-bold text-verde m-3">
+        <h1 className="text-4xl font-bold text-verde m-1 py-5">
           ¡Bienvenido al Lumar Club!
+        </h1>
+        <h1 className="text-4xl font-bold text-verde ">
+          PROXIMAMENTE
         </h1>
         <p className="text-lg text-gray-700 mt-2">
           Descubre los beneficios exclusivos que te esperan.
@@ -69,11 +72,6 @@ export default function LumarClub() {
         </div>
       </section>
 
-      <footer className="mt-12 text-center">
-        <p className="text-gris">
-          Únete hoy y empieza a disfrutar de todos estos beneficios.
-        </p>
-      </footer>
     </div>
   )
 }

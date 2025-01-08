@@ -6,6 +6,7 @@ export interface CartItem {
   name: string;
   price: number;
   img: string;
+  fragance:string;
   quantity: number; // Agregamos el campo quantity
 }
 

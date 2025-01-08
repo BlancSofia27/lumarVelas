@@ -1,0 +1,30 @@
+{
+  "pages": {
+    "/adminPanel/pedidos/page": [
+      "static/chunks/[root of the server]__8ef86b._.css",
+      "static/chunks/node_modules_e88819._.js",
+      "static/chunks/_a3479d._.js",
+      "static/chunks/app_layout_tsx_202b73._.js",
+      "static/chunks/node_modules_28ef94._.js",
+      "static/chunks/_7ad2ad._.js",
+      "static/chunks/app_adminPanel_layout_jsx_db5a17._.js",
+      "static/chunks/node_modules_@mui_material_120476._.js",
+      "static/chunks/node_modules_@mui_system_esm_de6ed0._.js",
+      "static/chunks/node_modules_@mui_x-data-grid_hooks_b5ed6b._.js",
+      "static/chunks/node_modules_@mui_x-data-grid_components_0d2be0._.js",
+      "static/chunks/node_modules_@mui_x-data-grid_916b9b._.js",
+      "static/chunks/node_modules_@popperjs_core_lib_b9b8df._.js",
+      "static/chunks/node_modules_83a05e._.js",
+      "static/chunks/_7dcb28._.js",
+      "static/chunks/app_adminPanel_pedidos_page_tsx_89eb59._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
+      "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
+      "static/chunks/node_modules_next_dist_client_34bfc0._.js",
+      "static/chunks/node_modules_next_dist_d09de6._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_2eec69._.js",
+      "static/chunks/_c4c472._.js",
+      "static/chunks/_25636b._.js"
+    ]
+  }
+}

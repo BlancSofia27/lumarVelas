@@ -70,13 +70,14 @@ const ProductTable = () => {
 
   return (
     <div className="p-6 mt-4">
-      
+      <div className="flex flex-row">
       <a
-        className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600"
+        className="bg-blue-500 text-white p-3 rounded hover:bg-blue-600"
         href="newProduct"
       >
         Añadir Nuevo Producto
       </a>
+      </div>
 
       <div className="mt-6 overflow-x-auto">
         {/* Tabla */}
@@ -87,7 +88,6 @@ const ProductTable = () => {
             <div className="w-2/6 font-semibold text-center">Descripción</div>
             <div className="w-1/6 font-semibold text-center">Precio</div>
             <div className="w-1/6 font-semibold text-center">Aroma</div>
-            <div className="w-1/6 font-semibold text-center">Intensidad</div>
             <div className="w-1/6 font-semibold text-center">Acción</div>
           </div>
 
@@ -126,7 +126,6 @@ const ProductTable = () => {
                 <div className="w-2/6 text-center">{product.description}</div>
                 <div className="w-1/6 text-center">${product.price}</div>
                 <div className="w-1/6 text-center">{product.fragance}</div>
-                <div className="w-1/6 text-center">{product.intensity}</div>
 
                 <div className="w-1/6 text-center">
                   {/* <button

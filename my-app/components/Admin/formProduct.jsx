@@ -1,20 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabaseClient";  // Importa el cliente de Supabase
 import Image from "next/image";  // Asegúrate de importar Image correctamente
 import Swal from "sweetalert2";  // Importa SweetAlert2
+
 const ProductForm = () => {
   const [name, setName] = useState('');
-  const [fragance, setFragance] = useState('');
+  const [fragances, setFragances] = useState([]);  // Estado para las fragancias disponibles
+  const [selectedFragances, setSelectedFragances] = useState([]);  // Estado para las fragancias seleccionadas
+  const [nextFragances, setNextFragances] = useState([]);  // Estado para las fragancias adicionales
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+  const [promotionalPrice, setPromotionalPrice] = useState(''); // Nuevo campo para el precio promocional
+  const [oldPrice, setOldPrice] = useState(''); // Nuevo campo para el precio anterior
   const [image, setImage] = useState(null);  // Imagen principal
   const [image1, setImage1] = useState(null); // Imagen secundaria
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [imagePublicUrl, setImagePublicUrl] = useState(null);
   const [image1PublicUrl, setImage1PublicUrl] = useState(null);
-  const [intensity, setIntensity] = useState(1); // Estado para la intensidad
+
+  // Cargar fragancias desde la base de datos
+  useEffect(() => {
+    const fetchFragances = async () => {
+      const { data, error } = await supabase.from("fragances").select("*");
+      if (error) {
+        console.error("Error al cargar las fragancias:", error);
+      } else {
+        setFragances(data);
+      }
+    };
+    fetchFragances();
+  }, []);
 
   // Función para manejar el cambio de la imagen principal
   const handleImageChange = (e) => {
@@ -36,7 +53,7 @@ const ProductForm = () => {
   const uploadImageToSupabase = async (file, folder) => {
     try {
       const { data, error } = await supabase.storage
-        .from(folder)  // Aquí se usa el nuevo bucket "products"
+        .from(folder)
         .upload(`${Date.now()}-${file.name}`, file);
 
       if (error) {
@@ -44,11 +61,10 @@ const ProductForm = () => {
         throw error;
       }
 
-      // Obtener la URL pública del archivo cargado usando el método getPublicUrl
-      const publicURL = supabase.storage.from("products").getPublicUrl(data.path);  // Referencia al bucket "products"
-      setImagePublicUrl(publicURL.publicURL);  // Actualiza la URL pública de la imagen
-      
-      return publicURL.data.publicUrl;  // Devuelve la URL pública de la imagen
+      const publicURL = supabase.storage.from("products").getPublicUrl(data.path);
+      setImagePublicUrl(publicURL.publicURL);
+
+      return publicURL.data.publicUrl;
     } catch (err) {
       console.error("Error al obtener la URL pública:", err);
       throw err;
@@ -59,7 +75,7 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !fragance || !price || !image || !image1) {
+    if (!name || !selectedFragances.length || !price || !image || !image1) {
       setError('Por favor completa todos los campos.');
       return;
     }
@@ -68,32 +84,23 @@ const ProductForm = () => {
     setError('');
 
     try {
-      // Subir las imágenes a Supabase y obtener las URLs públicas
       const imageUrl = await uploadImageToSupabase(image, 'products');  // Imagen principal
       const image1Url = await uploadImageToSupabase(image1, 'products');  // Imagen secundaria
 
       setImagePublicUrl(imageUrl);
       setImage1PublicUrl(image1Url);
 
-      // Agregar el console.log para ver los datos que se van a enviar
-      console.log({
-        name,
-        fragance,
-        description,
-        price,
-        imageUrl,
-        image1Url,
-      });
-
       // Guardar el producto en la base de datos de Supabase
       const { error } = await supabase
         .from("products")
         .insert([{
           name, 
-          fragance, 
+          fragance: selectedFragances,  // Guardar las fragancias seleccionadas (array de IDs)
+          next_fragance: nextFragances,  // Guardar las fragancias adicionales (array de IDs)
           description, 
           price, 
-          intensity,  // Enviar la intensidad seleccionada
+          promotional_price: promotionalPrice,  // Guardar el precio promocional
+          old_price: oldPrice,  // Guardar el precio anterior
           image_url: imageUrl, 
           image1_url: image1Url 
         }]);
@@ -102,16 +109,16 @@ const ProductForm = () => {
         throw error;
       }
 
-      // Limpiar el formulario
       setName('');
-      setFragance('');
+      setSelectedFragances([]);
+      setNextFragances([]);
       setDescription('');
       setPrice('');
+      setPromotionalPrice('');
+      setOldPrice('');
       setImage(null);
       setImage1(null);
-      setIntensity(1);  // Reiniciar la intensidad a su valor inicial
 
-      // Mostrar SweetAlert de éxito
       Swal.fire({
         title: '¡Producto creado con éxito!',
         text: 'El producto ha sido agregado correctamente.',
@@ -125,11 +132,32 @@ const ProductForm = () => {
     }
   };
 
+  // Función para manejar la selección y deselección de fragancias
+  const handleSelectFragance = (id) => {
+    setSelectedFragances((prevSelected) => {
+      if (prevSelected.includes(id)) {
+        return prevSelected.filter((fraganceId) => fraganceId !== id);
+      } else {
+        return [...prevSelected, id];
+      }
+    });
+  };
+
+  // Función para manejar la selección y deselección de fragancias adicionales
+  const handleSelectNextFragance = (id) => {
+    setNextFragances((prevSelected) => {
+      if (prevSelected.includes(id)) {
+        return prevSelected.filter((fraganceId) => fraganceId !== id);
+      } else {
+        return [...prevSelected, id];
+      }
+    });
+  };
+
   return (
     <div className="max-w-lg mx-auto p-6 bg-white border rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Crear Producto</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
-
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -144,16 +172,85 @@ const ProductForm = () => {
           />
         </div>
 
+        {/* Fragancias seleccionadas */}
         <div className="mb-4">
           <label htmlFor="fragance" className="block text-sm font-medium text-gray-700">
-            Fragancia
+            Fragancias Disponibles
+          </label>
+          <div className="grid grid-cols-3 gap-2">
+            {fragances.map((fragance) => (
+              <button
+                type="button"
+                key={fragance.id}
+                onClick={() => handleSelectFragance(fragance.id)}
+                className={`p-2 rounded-lg text-white ${selectedFragances.includes(fragance.id) ? 'bg-blue-500 border-2 border-green-500' : 'bg-gray-500'}`}
+                style={{ backgroundColor: fragance.color }}
+              >
+                {fragance.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Fragancias adicionales */}
+        <div className="mb-4">
+          <label htmlFor="nextFragance" className="block text-sm font-medium text-gray-700">
+            Fragancias Proximamente Disponibles
+          </label>
+          <div className="grid grid-cols-3 gap-2">
+            {fragances.map((fragance) => (
+              <button
+                type="button"
+                key={fragance.id}
+                onClick={() => handleSelectNextFragance(fragance.id)}
+                className={`p-2 rounded-lg text-white ${nextFragances.includes(fragance.id) ? 'bg-green-500 border-2 border-green-500' : 'bg-gray-500'}`}
+                style={{ backgroundColor: fragance.color }}
+              >
+                {fragance.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Precio */}
+        <div className="mb-4">
+          <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+            Precio Actual
           </label>
           <input
-            type="text"
-            id="fragance"
+            type="number"
+            id="price"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={fragance}
-            onChange={(e) => setFragance(e.target.value)}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
+
+        {/* Precio promocional */}
+        <div className="mb-4">
+          <label htmlFor="promotionalPrice" className="block text-sm font-medium text-gray-700">
+            Precio Promocional con efectivo o tranferencia
+          </label>
+          <input
+            type="number"
+            id="promotionalPrice"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            value={promotionalPrice}
+            onChange={(e) => setPromotionalPrice(e.target.value)}
+          />
+        </div>
+
+        {/* Precio anterior */}
+        <div className="mb-4">
+          <label htmlFor="oldPrice" className="block text-sm font-medium text-gray-700">
+            Precio Anterior/tachado
+          </label>
+          <input
+            type="number"
+            id="oldPrice"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            value={oldPrice}
+            onChange={(e) => setOldPrice(e.target.value)}
           />
         </div>
 
@@ -170,78 +267,39 @@ const ProductForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-            Precio
-          </label>
-          <input
-            type="number"
-            id="price"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="intensity" className="block text-sm font-medium text-gray-700">
-            Intensidad (1-5)
-          </label>
-          <select
-            id="intensity"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={intensity}
-            onChange={(e) => setIntensity(parseInt(e.target.value))}
-          >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-          </select>
-        </div>
-
-        <div className="mb-4">
           <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-            Imagen del Producto (Principal)
+            Imagen Principal
           </label>
           <input
             type="file"
             id="image"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            accept="image/*"
             onChange={handleImageChange}
+            className="w-full text-sm text-gray-700 file:bg-blue-500 file:text-white file:py-2 file:px-4 file:rounded-lg file:focus:outline-none file:focus:ring-2 file:focus:ring-indigo-500"
           />
         </div>
 
         <div className="mb-4">
           <label htmlFor="image1" className="block text-sm font-medium text-gray-700">
-            Imagen del Producto (Secundaria)
+            Imagen Secundaria
           </label>
           <input
             type="file"
             id="image1"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            accept="image/*"
             onChange={handleImage1Change}
+            className="w-full text-sm text-gray-700 file:bg-blue-500 file:text-white file:py-2 file:px-4 file:rounded-lg file:focus:outline-none file:focus:ring-2 file:focus:ring-indigo-500"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           disabled={loading}
         >
-          {loading ? 'Cargando...' : 'Crear Producto'}
+          {loading ? "Cargando..." : "Crear Producto"}
         </button>
       </form>
-
-      {imagePublicUrl && image1PublicUrl && (
-        <div className="mt-4">
-          <h3 className="text-lg font-semibold">Imágenes cargadas:</h3>
-          <div className="flex space-x-4">
-            <Image src={imagePublicUrl} width={100} height={100} alt="Imagen del producto principal" className="w-32 h-32 object-cover" />
-            <Image src={image1PublicUrl} width={100} height={100} alt="Imagen del producto secundaria" className="w-32 h-32 object-cover" />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

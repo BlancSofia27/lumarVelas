@@ -9,7 +9,7 @@ const Info: FC = () => {
     <div className="flex flex-col sm:flex-row w-full h-auto justify-center items-center bg-gris text-black p-4 space-y-4 sm:space-y-0 sm:space-x-4">
       {/* Primer Div Animado */}
       <motion.div
-        className="flex items-center w-full sm:w-[360px] h-[200px]"
+        className="flex items-center w-full "
         initial={{ x: -200, opacity: 0 }} // Comienza a la izquierda fuera de la pantalla
         animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
         transition={{ duration: 1, delay: 1 }} // Retraso de 1 segundo
@@ -25,7 +25,7 @@ const Info: FC = () => {
 
       {/* Segundo Div Animado */}
       <motion.div
-        className="flex items-center w-full sm:w-[360px] h-[200px]"
+        className="flex items-center w-full "
         initial={{ x: -200, opacity: 0 }} // Comienza a la izquierda fuera de la pantalla
         animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
         transition={{ duration: 1, delay: 1.2 }} // Retraso de 1.2 segundos
@@ -41,7 +41,7 @@ const Info: FC = () => {
 
       {/* Tercer Div Animado */}
       <motion.div
-        className="flex items-center w-full sm:w-[360px] h-[200px]"
+        className="flex items-center w-full "
         initial={{ x: -200, opacity: 0 }} // Comienza a la izquierda fuera de la pantalla
         animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
         transition={{ duration: 1, delay: 1.4 }} // Retraso de 1.4 segundos

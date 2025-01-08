@@ -47,6 +47,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                 />
                 <div>
                   <p className="font-medium">{item.name}</p>
+                  <p className="font-medium">{item.fragance}</p>
                   <p className="text-gray-500">x{item.quantity}</p> {/* Cantidad */}
                 </div>
               </div>

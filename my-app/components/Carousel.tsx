@@ -75,9 +75,9 @@ const Carousel = () => {
             {images[currentIndex].text}
           </h3>
         </div>
-        <button className="text-center text-sm mt-4 py-2 w-[200px] bg-white text-black font-medium rounded hover:bg-gray-200 transition-all duration-300">
+        {/* <button className="text-center text-sm mt-4 py-2 w-[200px] bg-white text-black font-medium rounded hover:bg-gray-200 transition-all duration-300">
           Más información
-        </button>
+        </button> */}
       </div>
 
       {/* Navigation dots below the carousel */}

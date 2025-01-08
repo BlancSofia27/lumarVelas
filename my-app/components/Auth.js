@@ -5,6 +5,7 @@ import { User, Eye, EyeOff } from "lucide-react"
 export default function Auth() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [phone, setPhone] = useState("") // Nuevo estado para teléfono
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -34,11 +35,21 @@ export default function Auth() {
       if (error) {
         setError(error.message)
       } else {
-        setSuccess(true)
-        alert("Registro exitoso. Por favor, verifica tu correo electrónico.")
+        // Actualización del teléfono en la tabla 'users' (o donde desees almacenarlo)
+        const { data, error: updateError } = await supabase
+          .from('users')  // Asegúrate de tener una tabla de usuarios
+          .upsert([{ email, phone }])  // Agrega el campo teléfono
+          
+        if (updateError) {
+          setError(updateError.message)
+        } else {
+          setSuccess(true)
+          alert("Registro exitoso. Por favor, verifica tu correo electrónico.")
+        }
       }
     } catch (err) {
-      setError("Hubo un error al registrar. Intenta de nuevo.",err)
+      setError("Hubo un error al registrar. Intenta de nuevo.")
+      console.error(err)
     } finally {
       setLoading(false)
     }
@@ -126,6 +137,25 @@ export default function Auth() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
+            {isSignUp && (
+              <div className="mb-4">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Teléfono
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  placeholder="Ingresa tu teléfono"
+                  className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </div>
+            )}
 
             <div className="mb-6 relative">
               <label

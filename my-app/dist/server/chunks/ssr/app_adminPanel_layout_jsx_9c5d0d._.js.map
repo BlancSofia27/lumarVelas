@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/adminPanel/layout.jsx"],"sourcesContent":["\"use client\"\r\n\r\nimport React from \"react\"\r\nimport AdminSideBar from \"@/components/Admin/adminLayout\" // Ajusta la ruta si es necesario\r\nimport AdminSidebar from \"@/components/Admin/adminSideBar\"\r\n\r\nexport default function AdminPanelLayout() {\r\n  return (\r\n    <AdminSidebar/>\r\n  )\r\n   \r\n}\r\n"],"names":[],"mappings":";;;;AAEA;;;;;;AAEA;AAJA;;;;;AAMe,SAAS;IACtB,qBACE,8OAAC,oIAAA,CAAA,UAAY;;;;;AAGjB"}},
+    {"offset": {"line": 30, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

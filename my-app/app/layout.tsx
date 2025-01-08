@@ -11,7 +11,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Lumar.CO-Velas Homemade",
+  title: "Lumar-Velas Homemade",
   description: "Aromas y velas",
   icons: {
     icon: "/favicon.png", // Especificamos la ruta al favicon
