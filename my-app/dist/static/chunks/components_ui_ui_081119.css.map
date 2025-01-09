@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/blanc/Desktop/lumarVelas/my-app/components/ui/ui.css"],"sourcesContent":["/* From Uiverse.io by mobinkakei */ \r\n.btn {\r\n    width: 140px;\r\n    height: 35px;\r\n    /* background: linear-gradient(to top, #d1d1d1, #d3d3d3, #ffffff); */\r\n    color: #fff;\r\n    border-radius: 50px;\r\n    border: none;\r\n    outline: none;\r\n    cursor: pointer;\r\n    position: relative;\r\n    /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); */\r\n    overflow: hidden;\r\n    margin:9px 0px 0px 30px;\r\n  }\r\n  \r\n  .btn span {\r\n    font-size: 12px;\r\n    text-transform: uppercase;\r\n    letter-spacing: 1px;\r\n    transition: top 0.5s;\r\n  }\r\n  \r\n  .btn-text-one {\r\n    position: absolute;\r\n    width: 100%;\r\n    top: 50%;\r\n    left: 0;\r\n    transform: translateY(-50%);\r\n  }\r\n  \r\n  .btn-text-two {\r\n    position: absolute;\r\n    width: 100%;\r\n    top: 150%;\r\n    left: 0;\r\n    transform: translateY(-50%);\r\n  }\r\n  \r\n  .btn:hover .btn-text-one {\r\n    top: -100%;\r\n  }\r\n  \r\n  .btn:hover .btn-text-two {\r\n    top: 50%;\r\n  }\r\n  "],"names":[],"mappings":"AACA;;;;;;;;;;;;;AAeE;;;;;;;AAOA;;;;;;;;AAQA;;;;;;;;AAQA;;;;AAIA"}},
-    {"offset": {"line": 44, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
