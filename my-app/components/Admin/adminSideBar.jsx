@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const AdminSidebar = ({ isOpen, onClose }) => {
+const AdminSidebar = ({ isOpen  }) => {
   return (
     <div
       className={`fixed top-0 left-0 h-full w-48 bg-white text-gray-800 shadow-lg transform ${

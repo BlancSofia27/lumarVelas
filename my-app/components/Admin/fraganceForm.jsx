@@ -30,7 +30,7 @@ const FraganceModal = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("fragances") // Reemplaza con el nombre de tu tabla en Supabase
       .insert([formData]);
 

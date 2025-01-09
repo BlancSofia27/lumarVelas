@@ -36,7 +36,7 @@ export default function Auth() {
         setError(error.message)
       } else {
         // Actualización del teléfono en la tabla 'users' (o donde desees almacenarlo)
-        const { data, error: updateError } = await supabase
+        const {  error: updateError } = await supabase
           .from('users')  // Asegúrate de tener una tabla de usuarios
           .upsert([{ email, phone }])  // Agrega el campo teléfono
           

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabaseClient";  // Importa el cliente de Supabase
-import Image from "next/image";  // Asegúrate de importar Image correctamente
 import Swal from "sweetalert2";  // Importa SweetAlert2
 
 const ProductForm = () => {
@@ -17,8 +16,6 @@ const ProductForm = () => {
   const [image1, setImage1] = useState(null); // Imagen secundaria
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [imagePublicUrl, setImagePublicUrl] = useState(null);
-  const [image1PublicUrl, setImage1PublicUrl] = useState(null);
 
   // Cargar fragancias desde la base de datos
   useEffect(() => {
