@@ -1,14 +1,14 @@
+// components/Detail.jsx
 "use client";
+
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "@/utils/supabaseClient";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "@/store/cartSlice";
 import { toast } from "react-toastify"; // Importamos Toastify
 
-export default function ProductDetail() {
-  const { id } = useParams();
+export default function ProductDetail({ id }) {
   const [product, setProduct] = useState(null);
   const [fragances, setFragances] = useState([]);
   const [nextFragances, setNextFragances] = useState([]); // Fragancias proximas
@@ -105,6 +105,7 @@ export default function ProductDetail() {
     return 0;
   };
 
+
   return (
     <>
       <div className="bg-verde h-[60px] sm:h-[70px] md:h-[130px] lg:h-[180px] xl:h-[100px] w-full"></div>
@@ -131,10 +132,6 @@ export default function ProductDetail() {
           {/* Detalles del producto */}
           <div>
             <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
-
-           
-
-            
 
             <p className="text-gray-600 mb-4">{product.description}</p>
 
@@ -233,13 +230,10 @@ export default function ProductDetail() {
                    index < (selectedFragance || selectedNextFragance).intensity
                      ? "bg-black"
                      : "bg-gray-300"
-                 }`}
-               ></span>
+                 }`}></span>
              ))}
          </div>
        </div>
-
-
 
           <h3 className="text-lg font-bold">
             {(selectedFragance || selectedNextFragance).name}
@@ -257,8 +251,6 @@ export default function ProductDetail() {
             )}
         </>
       )}
-
-
     </>
   );
 }

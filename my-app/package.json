@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf dist",
-    "build": "npm run clean && next build",
+    "build": "next build",
     "export": "npm run clean && next export"
   },
   "dependencies": {

@@ -1,7 +1,21 @@
-import ProductDetail from "@/components/Detail"
+// app/products/[id]/page.js (para rutas dinámicas de productos)
+import { supabase } from "../../../../utils/supabaseClient"; 
+import ProductDetail from "../../../../components/Detail"
+export async function generateStaticParams() {
+  const { data: products } = await supabase.from('products').select('id');
 
-export default function Detail({ params }) {
-  const { id } = params
+  // Retornar un array de objetos con los parámetros que quieres usar
+  return products.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
 
-  return <ProductDetail productId={id} />
+export default function ProductDetailPage({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <ProductDetail id={id} />
+    </div>
+  );
 }

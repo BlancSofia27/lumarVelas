@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
 
-  // output: "export", // Activa el modo de exportación estática
+  output: "export", // Activa el modo de exportación estática
 
   // Opcional: Añade una barra inclinada al final de las rutas
   trailingSlash: true, // Ruta `/about` -> `/about/`
