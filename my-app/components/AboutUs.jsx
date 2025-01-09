@@ -63,7 +63,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Segunda sección */}
+      {/* Segunda sección
       <section className="text-gray-600 body-font bg-gradient-to-r from-gris via-marron to-verde">
         <div className="container px-5 py-24 mx-auto">
           <motion.div
@@ -111,78 +111,9 @@ const AboutUs = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Tercera sección */}
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-col">
-            <div className="h-1 bg-gray-200 rounded overflow-hidden">
-              <div className="w-24 h-full bg-verde"></div>
-            </div>
-            <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-              <h1 className="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">
-                Velas Artesanales Lumar
-              </h1>
-              <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">
-                Creamos velas únicas hechas a mano, diseñadas para iluminar tus
-                momentos especiales con aromas y diseños que inspiran
-                tranquilidad y calidez.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
-            <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
-              <div className="rounded-lg h-64 overflow-hidden">
-                <Image
-                  alt="Vela Serenity"
-                  className="object-cover object-center h-full w-full"
-                  src="https://cdn.shopify.com/s/files/1/0732/7734/1971/files/VI107___PORTAVELA_PUCCI_c.jpg?v=1686324456"
-                  width={1204}
-                  height={504}
-                />
-              </div>
-              <h2 className="text-xl font-medium title-font text-gray-900 mt-5">
-                Serenity
-              </h2>
-              <p className="text-base leading-relaxed mt-2">
-                Déjate envolver por la suavidad de nuestros aromas florales,
-                ideales para transformar cualquier espacio en un refugio de paz.
-              </p>
-            </div>
-            <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
-              <div className="rounded-lg h-64 overflow-hidden">
-                <Image
-                  alt="Vela Harmony"
-                  className="object-cover object-center h-full w-full"
-                  src="https://cdn.shopify.com/s/files/1/0732/7734/1971/files/VI043___PORTAVELA_DE_VIDRIO_GLOBITO_c.jpg?v=1686324380"
-                  width={1204}
-                  height={504}
-                />
-              </div>
-              <h2 className="text-xl font-medium title-font text-gray-900 mt-5">
-                Harmony
-              </h2>
-              <p className="text-base leading-relaxed mt-2">
-                Descubre una sinfonía de aromas dulces y refrescantes que te
-                transportarán a un lugar de calma y serenidad.
-              </p>
-            </div>
-            <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
-              <div className="rounded-lg h-64 overflow-hidden">
-              <Image alt="Vela Bliss" className="object-cover object-center h-full w-full" src="https://cdn.shopify.com/s/files/1/0732/7734/1971/files/VI105___PORTAVELA_DIAMOND_II_c.jpg?v=1686324339" width={1204} height={504}/>
-              </div>
-              <h2 className="text-xl font-medium title-font text-gray-900 mt-5">
-                Tranquility
-              </h2>
-              <p className="text-base leading-relaxed mt-2">
-                Una mezcla perfecta de especias y notas cítricas para esos
-                momentos donde la tranquilidad es esencial.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+     
     </>
   )
 }

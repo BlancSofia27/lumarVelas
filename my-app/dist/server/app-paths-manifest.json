@@ -1,18 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/adminPanel/fragancias/page": "app/adminPanel/fragancias/page.js",
-  "/adminPanel/page": "app/adminPanel/page.js",
-  "/adminPanel/productos/newProduct/page": "app/adminPanel/productos/newProduct/page.js",
-  "/adminPanel/pedidos/page": "app/adminPanel/pedidos/page.js",
-  "/adminPanel/productos/page": "app/adminPanel/productos/page.js",
-  "/user/cart/page": "app/user/cart/page.js",
-  "/user/lumarclub/page": "app/user/lumarclub/page.js",
   "/user/sobreNosotros/page": "app/user/sobreNosotros/page.js",
-  "/user/products/[id]/page": "app/user/products/[id]/page.js",
-  "/user/products/aromaticas/page": "app/user/products/aromaticas/page.js",
-  "/user/products/flotantes/page": "app/user/products/flotantes/page.js",
-  "/user/products/loved-products/page": "app/user/products/loved-products/page.js",
-  "/user/products/page": "app/user/products/page.js",
-  "/user/products/vegan/page": "app/user/products/vegan/page.js"
+  "/user/aromas/page": "app/user/aromas/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

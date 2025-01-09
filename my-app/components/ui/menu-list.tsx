@@ -16,32 +16,32 @@ import {
 } from "@/components/ui/navigation-menu"
 import { SparkleIcon } from "lucide-react"
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Citronella",
-    href: "/products/citronella",
-    description:
-      "Ideal para repeler insectos y aportar un aire limpio y natural.",
-  },
-  {
-    title: "Coco Vainilla",
-    href: "/products/coco-vainilla",
-    description:
-      "Una mezcla suave y dulce que crea un ambiente cálido.",
-  },
-  {
-    title: "Sándalo",
-    href: "/products/sandalo",
-    description:
-      "Una fragancia profunda y terrosa con notas amaderadas.",
-  },
-  {
-    title: "Verbena",
-    href: "/products/verbena",
-    description:
-      "Aroma refrescante, ideal para purificar cualquier espacio.",
-  },
-]
+// const components: { title: string; href: string; description: string }[] = [
+//   {
+//     title: "Citronella",
+//     href: "/products/citronella",
+//     description:
+//       "Ideal para repeler insectos y aportar un aire limpio y natural.",
+//   },
+//   {
+//     title: "Coco Vainilla",
+//     href: "/products/coco-vainilla",
+//     description:
+//       "Una mezcla suave y dulce que crea un ambiente cálido.",
+//   },
+//   {
+//     title: "Sándalo",
+//     href: "/products/sandalo",
+//     description:
+//       "Una fragancia profunda y terrosa con notas amaderadas.",
+//   },
+//   {
+//     title: "Verbena",
+//     href: "/products/verbena",
+//     description:
+//       "Aroma refrescante, ideal para purificar cualquier espacio.",
+//   },
+// ]
 
 const MenuList = () => {
   return (
@@ -98,7 +98,7 @@ const MenuList = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Aromas</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-black bg-opacity-85">
@@ -115,11 +115,16 @@ const MenuList = () => {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <Link href="/user/sobreNosotros" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Sobre Nosotros
+            </NavigationMenuLink>
+          </Link>
+          <Link href="/user/aromas" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Nuestros Aromas
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
