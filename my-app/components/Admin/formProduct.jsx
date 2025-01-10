@@ -16,6 +16,8 @@ const ProductForm = () => {
   const [image1, setImage1] = useState(null); // Imagen secundaria
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [imagePublicUrl, setImagePublicUrl] = useState(null); // Estado para la URL pública de la imagen
+  const [image1PublicUrl, setImage1PublicUrl] = useState(null); // Estado para la URL pública de la imagen secundaria
 
   // Cargar fragancias desde la base de datos
   useEffect(() => {
@@ -47,65 +49,87 @@ const ProductForm = () => {
   };
 
   // Función para subir una imagen a Supabase Storage y obtener la URL pública
-  const uploadImageToSupabase = async (file, folder) => {
+  const uploadImageToSupabase = async (file, products) => {
     try {
+      if (!file) throw new Error("No se seleccionó un archivo para subir.");
+
+      const fileName = `${Date.now()}_${file.name}`;
+
+      // Subir el archivo
       const { data, error } = await supabase.storage
-        .from(folder)
-        .upload(`${Date.now()}-${file.name}`, file);
+        .from(products)
+        .upload(fileName, file);
 
       if (error) {
-        console.error("Error al subir la imagen:", error);
-        throw error;
+        console.error("Error al subir la imagen:", error.message);
+        throw new Error("Error al subir la imagen a Supabase.");
       }
 
-      const publicURL = supabase.storage.from("products").getPublicUrl(data.path);
-      setImagePublicUrl(publicURL.publicURL);
-
-      return publicURL.data.publicUrl;
+//       const publicURL = supabase.storage.from("cover").getPublicUrl(file.name);
+// setImagePublicUrl(publicURL)
+      // Obtener la URL pública
+      const URL = supabase.storage
+        .from("products")
+        .getPublicUrl(data.path);
+      console.log(data.path)
+      const publicUrlfinal = URL.data.publicUrl;
+      console.log(URL)
+      console.log(publicUrlfinal)
+      return publicUrlfinal;
     } catch (err) {
-      console.error("Error al obtener la URL pública:", err);
+      console.error("Error en uploadImageToSupabase:", err.message);
       throw err;
     }
   };
 
-  // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!name || !selectedFragances.length || !price || !image || !image1) {
       setError('Por favor completa todos los campos.');
       return;
     }
-
+  
     setLoading(true);
     setError('');
-
+  
     try {
-      const imageUrl = await uploadImageToSupabase(image, 'products');  // Imagen principal
-      const image1Url = await uploadImageToSupabase(image1, 'products');  // Imagen secundaria
-
+      // Subir las imágenes y obtener las URLs públicas
+      const imageUrl = await uploadImageToSupabase(image, 'products');
+      const image1Url = await uploadImageToSupabase(image1, 'products');
+  
+      if (!imageUrl || !image1Url) {
+        throw new Error("Error al obtener las URLs de las imágenes.");
+      }
+  
+      // Establecer las URLs públicas en el estado
       setImagePublicUrl(imageUrl);
       setImage1PublicUrl(image1Url);
-
-      // Guardar el producto en la base de datos de Supabase
+  
+      // Insertar el producto en la base de datos
       const { error } = await supabase
         .from("products")
-        .insert([{
-          name, 
-          fragance: selectedFragances,  // Guardar las fragancias seleccionadas (array de IDs)
-          next_fragance: nextFragances,  // Guardar las fragancias adicionales (array de IDs)
-          description, 
-          price, 
-          promotional_price: promotionalPrice,  // Guardar el precio promocional
-          old_price: oldPrice,  // Guardar el precio anterior
-          image_url: imageUrl, 
-          image1_url: image1Url 
-        }]);
+        .insert([
+          {
+            name,
+            fragance:selectedFragances, // Formatear como cadena JSON
+            next_fragance: nextFragances, // Formatear como cadena JSON
+            description,
+            price,
+            promotional_price: promotionalPrice || null,
+            old_price: oldPrice || null,
+            image_url: imagePublicUrl,  // Usar la URL pública desde el estado
+            image1_url: image1PublicUrl, // Usar la URL pública de la imagen secundaria
+          },
+        ]);
 
+        console.log(selectedFragances,nextFragances)
+  
       if (error) {
         throw error;
       }
-
+  
+      // Limpiar el formulario después de enviar
       setName('');
       setSelectedFragances([]);
       setNextFragances([]);
@@ -115,7 +139,7 @@ const ProductForm = () => {
       setOldPrice('');
       setImage(null);
       setImage1(null);
-
+  
       Swal.fire({
         title: '¡Producto creado con éxito!',
         text: 'El producto ha sido agregado correctamente.',
@@ -123,6 +147,7 @@ const ProductForm = () => {
         confirmButtonText: 'Aceptar',
       });
     } catch (err) {
+      console.error("Error al crear el producto:", err.message);
       setError('Error al crear el producto: ' + err.message);
     } finally {
       setLoading(false);
@@ -240,7 +265,7 @@ const ProductForm = () => {
         {/* Precio anterior */}
         <div className="mb-4">
           <label htmlFor="oldPrice" className="block text-sm font-medium text-gray-700">
-            Precio Anterior/tachado
+            Precio Anterior
           </label>
           <input
             type="number"
@@ -251,18 +276,7 @@ const ProductForm = () => {
           />
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-            Descripción
-          </label>
-          <textarea
-            id="description"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-
+        {/* Imagen principal */}
         <div className="mb-4">
           <label htmlFor="image" className="block text-sm font-medium text-gray-700">
             Imagen Principal
@@ -270,12 +284,12 @@ const ProductForm = () => {
           <input
             type="file"
             id="image"
-            accept="image/*"
             onChange={handleImageChange}
-            className="w-full text-sm text-gray-700 file:bg-blue-500 file:text-white file:py-2 file:px-4 file:rounded-lg file:focus:outline-none file:focus:ring-2 file:focus:ring-indigo-500"
+            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
           />
         </div>
 
+        {/* Imagen secundaria */}
         <div className="mb-4">
           <label htmlFor="image1" className="block text-sm font-medium text-gray-700">
             Imagen Secundaria
@@ -283,19 +297,20 @@ const ProductForm = () => {
           <input
             type="file"
             id="image1"
-            accept="image/*"
             onChange={handleImage1Change}
-            className="w-full text-sm text-gray-700 file:bg-blue-500 file:text-white file:py-2 file:px-4 file:rounded-lg file:focus:outline-none file:focus:ring-2 file:focus:ring-indigo-500"
+            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          disabled={loading}
-        >
-          {loading ? "Cargando..." : "Crear Producto"}
-        </button>
+        <div className="mb-4">
+          <button
+            type="submit"
+            className={`w-full py-2 px-4 rounded-lg text-white ${loading ? 'bg-gray-500' : 'bg-blue-500'}`}
+            disabled={loading}
+          >
+            {loading ? 'Creando Producto...' : 'Crear Producto'}
+          </button>
+        </div>
       </form>
     </div>
   );
