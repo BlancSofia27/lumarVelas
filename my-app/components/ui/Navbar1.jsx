@@ -6,10 +6,11 @@ import MenuList from "./menu-list"
 import ItemsMenuMobile from "./Items-menu-mobile"
 import CartSidebar from "../CartSideBar" // Importa el sidebar del carrito
 import Image from "next/image"
-import Auth from "../../components/Auth"
+import Auth from "../Auth"
 import JoinButton from "../buttonLmr"
 
-const Navbar = () => {
+
+const Navbar1 = () => {
   const router = useRouter()
   const [isCartOpen, setIsCartOpen] = useState(false) // Estado para controlar el sidebar
   const [isAuthOpen, setIsAuthOpen] = useState(false) // Estado para controlar Auth
@@ -34,13 +35,12 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 text-white ${
-        isScrolled ? "bg-negro shadow-md p-2 " : "bg-transparent "
+      className={`top-0 left-0 right-0 z-50 w-full transition-all duration-300 text-white ${
+        isScrolled ? "bg-negro shadow-md p-2 " : "bg-verde p-2 "
       }`}
     >
       <div
-        className={`flex items-center justify-between lg:px-4 xl:px-4 w-full cursor-pointer 
-          xs:mt-10 sm:mt-10 md:mt-2 lg:mt-0 xl:mt-0 px-2`} // Aplica mt-10 cuando el tamaño de pantalla es cercano a 350px.
+        className={`flex items-center justify-between lg:px-4 xl:px-4 w-full cursor-pointer `} // Aplica mt-10 cuando el tamaño de pantalla es cercano a 350px.
       >
         <h1 onClick={() => router.push("/")}>
           <Image
@@ -48,7 +48,7 @@ const Navbar = () => {
             alt="lumar.co velas artesanales"
             width={250} // Tamaño base en sm
             height={250 / 1.5} // Proporción más grande
-            className="transition-all duration-300 xs:w-[200px] sm:w-[200px] sm:h-[80px] lg:w-[230px] lg:h-[98px] mt-5"
+            className="transition-all duration-300 xs:w-[200px] sm:w-[200px] sm:h-[80px] lg:w-[230px] lg:h-[98px] mt-2"
           />
         </h1>
         {/* Menú para pantallas grandes */}
@@ -106,4 +106,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar1

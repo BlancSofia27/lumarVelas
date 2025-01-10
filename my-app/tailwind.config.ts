@@ -62,9 +62,12 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		screens: {
+			xs: '330px', // Define un breakpoint para pantallas menores a 350px
+		  },
   	}
+	
   },
-  plugins: [require("tailwindcss-animate")],
 };
 export default config;

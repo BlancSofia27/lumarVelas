@@ -108,7 +108,6 @@ export default function ProductDetail({ id }) {
 
   return (
     <>
-      <div className="bg-verde h-[60px] sm:h-[70px] md:h-[130px] lg:h-[180px] xl:h-[100px] w-full"></div>
       <div className="max-w-4xl mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Imagen del producto */}

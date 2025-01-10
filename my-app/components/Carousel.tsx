@@ -13,8 +13,8 @@ const images = [
   },
   {
     src: "/header.jpg",
-    title: "Velas Artesanales que Inspiran",
-    text: "Cada vela de Lumar Club está diseñada\npara crear ambientes cálidos y únicos.",
+    title: "",
+    text: "",
     position: "left-1/2 -translate-x-1/2 text-center",
   },
   {

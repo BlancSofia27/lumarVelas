@@ -123,7 +123,7 @@ const ProductForm = () => {
           },
         ]);
 
-        console.log(selectedFragances,nextFragances)
+        console.log(selectedFragances,nextFragances,imagePublicUrl,image1PublicUrl)
   
       if (error) {
         throw error;

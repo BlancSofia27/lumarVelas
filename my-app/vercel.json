@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/user/products/:id",
+        "destination": "/user/products/:id"
+      }
+    ]
+  }
+  

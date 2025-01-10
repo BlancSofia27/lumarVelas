@@ -1,5 +1,4 @@
 // app/products/layout.tsx
-import Navbar from "@/components/ui/Navbar";
 import { ReactNode } from "react";
 
 interface ProductsLayoutProps {
@@ -9,7 +8,7 @@ interface ProductsLayoutProps {
 const ProductsLayout = ({ children }: ProductsLayoutProps) => {
   return (
     <div>
-      <Navbar />
+      
       <main>{children}</main>
     </div>
   );
