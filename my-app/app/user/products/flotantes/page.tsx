@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion"; // Importamos motion
-import VelasGrid from "@/components/products";
+import VelasGrid from "@/components/VelasGrid";
 
 const FlotantesPage = () => {
   return (

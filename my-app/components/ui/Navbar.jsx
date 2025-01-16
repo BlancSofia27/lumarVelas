@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
-import { Heart, Instagram, ShoppingCart } from "lucide-react"
+import { Instagram, ShoppingCart } from "lucide-react"
 import { useRouter } from "next/navigation"
 import MenuList from "./menu-list"
 import ItemsMenuMobile from "./Items-menu-mobile"
@@ -68,11 +68,11 @@ const Navbar = () => {
             className="cursor-pointer"
             onClick={() => setIsCartOpen(!isCartOpen)} // Abre o cierra el sidebar
           />
-          <Heart
+          {/* <Heart
             strokeWidth={1}
             className="cursor-pointer"
             onClick={() => router.push("/products/loved-products")}
-          />
+          /> */}
 
           <a
             href="https://www.instagram.com/lumar.co/"

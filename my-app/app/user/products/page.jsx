@@ -1,4 +1,4 @@
-import VelasGrid from "@/components/products"
+import VelasGrid from "@/components/VelasGrid"
 
 const Products = () => {
   return (
@@ -11,7 +11,7 @@ const Products = () => {
           COLECCIÓN TENNESSEE
         </h1>
       </div>
-      <VelasGrid />
+      <VelasGrid/>
     </div>
   )
 }

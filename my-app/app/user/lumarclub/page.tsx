@@ -4,7 +4,6 @@ import { Gift, ShoppingCart, Users, Star, Heart } from "lucide-react" // Importa
 export default function LumarClub() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center ">
-      <div className="bg-verde h-[130px] w-full"></div>
       <header className="text-center mb-8 ">
         <h1 className="text-4xl font-bold text-verde m-1 py-5">
           ¡Bienvenido al Lumar Club!

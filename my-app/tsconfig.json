@@ -28,6 +28,6 @@
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "dist/types/**/*.ts"
-, ".next/types/app/adminPanel/page.tsx", "components/Admin/formProduct.jsx", "app/adminPanel/productos/page.jsx", "components/products.jsx", "components/CartSideBar.jsx", "components/Admin/adminSideBar.jsx", "app/adminPanel/layout.jsx", "components/ui/footer.jsx", "components/AboutUs.jsx", "app/user/products/page.jsx", "app/user/products/[id]/page.jsx", "components/CarouselText.jsx"  ],
+, ".next/types/app/adminPanel/page.tsx", "components/Admin/formProduct.jsx", "app/adminPanel/productos/page.jsx", "components/VelasGrid.jsx", "components/CartSideBar.jsx", "components/Admin/adminSideBar.jsx", "app/adminPanel/layout.jsx", "components/ui/footer.jsx", "components/AboutUs.jsx", "app/user/products/page.jsx", "app/user/products/[id]/page.js", "components/CarouselText.jsx"  ],
   "exclude": ["node_modules"]
 }

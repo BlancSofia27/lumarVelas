@@ -4,7 +4,6 @@ import Image from "next/image"
 const AromasPage = () => {
   return (
     <>
-      <div className="bg-verde h-[130px] w-full"></div>
       {/* Tercera sección */}
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">

@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Heart } from "lucide-react";
+import { Heart} from "lucide-react";
 // import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation"; // Importa el hook useRouter
 // import { addItemToCart } from "@/store/cartSlice";
 // import { toast } from "react-toastify";
 import { supabase } from "../utils/supabaseClient";
+import Link from "next/link";
 
 const VelasGrid = ({ filters = {} }) => {
   const [products, setProducts] = useState([]);
@@ -64,11 +65,11 @@ const VelasGrid = ({ filters = {} }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-zinc-900 py-4">
       {filteredProducts.map((producto) => (
+        <Link key={producto.id} href={`${producto.id}`}>
         <Skeleton
           key={producto.id}
           className="bg-white"
           title={producto.name}
-          onClick={() => router.push(`/user/products/${producto.id}`)} // Redirige al detalle
         >
           <div className="relative flex flex-col items-center cursor-pointer">
             {/* Ícono de corazón con hover */}
@@ -108,6 +109,7 @@ const VelasGrid = ({ filters = {} }) => {
             
           </div>
         </Skeleton>
+        </Link>
       ))}
     </div>
   );

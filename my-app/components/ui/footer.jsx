@@ -13,7 +13,12 @@ const dataFooter = [
   {
     id: 2,
     name: "Sobre Nosotros",
-    link: "/user/sobrenosotros",
+    link: "/user/sobreNosotros",
+  },
+  {
+    id: 3,
+    name: "Nuestros Aromas",
+    link: "/user/aromas",
   },
 ];
 
@@ -50,8 +55,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="w-6 h-6 mr-2 text-black" />
-                <Link href="mailto:info@lumarvelas.com" className="hover:underline">
-                contacto@lumarvelas.com.ar
+                <Link href="mailto:contacto.lumarvelas@gmail.com" className="hover:underline">
+                contacto.lumarvelas@gmail.com
                 </Link>
               </li>
             </ul>
