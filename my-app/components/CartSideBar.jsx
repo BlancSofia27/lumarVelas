@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 
@@ -63,14 +63,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
           <span>Total:</span>
           <span>${total}</span>
         </div>
-        <a
-          href={`https://wa.me/${whatsappNumber}?text=${generateWhatsAppMessage()}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full bg-blue-500 text-white py-2 rounded-lg shadow-md mt-4 text-center"
-        >
+        <Link href='/api/paymentResume'>
           Finalizar Compra
-        </a>
+        </Link>
       </div>
     </div>
   );

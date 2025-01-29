@@ -1,0 +1,16 @@
+{
+  "node": {
+    "40d412a74e8b3f137cd1508bb9868d7b7cc06a5998": {
+      "workers": {
+        "app/api/paymentResume/page": {
+          "moduleId": "[project]/.next-internal/server/app/api/paymentResume/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/api/paymentResume/page.js [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/paymentResume/page": "rsc"
+      }
+    }
+  },
+  "edge": {}
+}
