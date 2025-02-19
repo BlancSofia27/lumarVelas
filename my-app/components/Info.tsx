@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { FC } from "react";
 import { motion } from "framer-motion"; // Importamos motion para las animaciones
+import { PaintBucket, Pipette } from "lucide-react";
 
 const Info: FC = () => {
   return (
@@ -14,7 +15,7 @@ const Info: FC = () => {
         animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
         transition={{ duration: 1, delay: 1 }} // Retraso de 1 segundo
       >
-        <Image src="./iconAroma.png" alt="Aroma Icon" className="w-20 h-20 p-4  " width={20} height={20} />
+        <Pipette size={20} className="w-24 h-24 p-4" />
         <div className="flex flex-col">
           <h2 className="font-bold">Calidad de los aromas</h2>
           <p className="text-justify px-2">
@@ -30,7 +31,7 @@ const Info: FC = () => {
         animate={{ x: 0, opacity: 1 }} // Se mueve a su posición y se vuelve visible
         transition={{ duration: 1, delay: 1.2 }} // Retraso de 1.2 segundos
       >
-        <Image src="./iconHeart.png" alt="Heart Icon" className="w-20 h-20 p-4 " width={20} height={20} />
+        <PaintBucket size={20} className="w-28 h-28 p-4" />
         <div className="flex flex-col">
           <h2 className="font-bold">Proceso de creación</h2>
           <p className="text-justify px-2">
