@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 
 const messages = [
-  "Envíos gratis en Concepción del Uruguay",
+  "Envíos gratis en Concepción del Uruguay superando los $20.000",
   "|",
   "20% OFF con efectivo o transferencia",
   "|",
