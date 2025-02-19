@@ -6,31 +6,31 @@ import Image from "next/image"
 
 const images = [
   {
-    src: "/inicioimg/DSC_1107.jpg",
+    src: "/inicioimg/DSC_1107.webp",
     title: "Disfruta de Promociones Exclusivas",
     text: "Hasta 70% OFF en la segunda unidad\n3 cuotas sin interés en nuestras velas handmade.",
     position: "left-10 text-left ",
   },
   {
-    src: "/inicioimg/DSC_1091.jpg",
+    src: "/inicioimg/DSC_1091.webp",
     title: "",
     text: "",
     position: "left-10 text-left ",
   },
   {
-    src: "/inicioimg/DSC_0975.jpg",
+    src: "/inicioimg/DSC_0975.webp",
     title: "",
     text: "",
     position: "left-1/2 -translate-x-1/2 text-center",
   },
   {
-    src: "/inicioimg/DSC_1079.jpg",
+    src: "/inicioimg/DSC_1079.webp",
     title: "Lumar Club: Más que Velas",
     text: "Forma parte de nuestra comunidad\npromociones exclusivas y ediciones limitadas.",
     position: "left-10 text-left ",
   },
   {
-    src: "/inicioimg/DSC_0771.jpg",
+    src: "/inicioimg/DSC_0771.webp",
     title: "",
     text: "",
     position: "right-10 text-right",

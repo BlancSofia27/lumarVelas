@@ -9,10 +9,10 @@ const AboutUs = () => {
 
   // Array de imágenes para el carrusel
   const images = [
-    "/nosotrosimg/DSC_0895.jpg",
-    "/nosotrosimg/DSC_1120.jpg",
-    "/nosotrosimg/DSC_0936.jpg",
-    "/nosotrosimg/DSC_1107.jpg"
+    "/nosotrosimg/DSC_0895.webp",
+    "/nosotrosimg/DSC_1120.webp",
+    "/nosotrosimg/DSC_0936.webp",
+    "/nosotrosimg/DSC_1107.webp"
   ];
 
   // Función para cambiar a la siguiente imagen
