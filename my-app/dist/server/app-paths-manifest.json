@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/api/paymentResume/page": "app/api/paymentResume/page.js",
+  "/api/mercadopago/connect/route": "app/api/mercadopago/connect/route.js",
+  "/user/products/page": "app/user/products/page.js",
+  "/user/products/[id]/page": "app/user/products/[id]/page.js"
+}

@@ -1,0 +1,11 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 63, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/utils/api.js"],"sourcesContent":["import { preferences as Preference } from 'mercadopago';\r\n\r\nconst api = {\r\n  payment: {\r\n    async create(cart) {\r\n      try {\r\n        // Creamos la preferencia incluyendo los productos del carrito\r\n        const preference = await new Preference().create({\r\n          body: {\r\n            items: cart.map(item => ({\r\n              id: item.id.toString(), // ID del producto\r\n              title: item.name,       // Nombre del producto\r\n              unit_price: item.price, // Precio unitario\r\n              quantity: item.quantity // Cantidad\r\n            })),\r\n            metadata: {\r\n              cartDetails: cart // Guardamos los detalles del carrito en los metadatos\r\n            }\r\n          }\r\n        });\r\n\r\n        // Devolvemos el init_point (URL de pago) para que el usuario pueda pagar\r\n        return preference.init_point;\r\n      } catch (error) {\r\n        console.error('Error al crear la preferencia de pago:', error);\r\n        throw new Error('No se pudo generar la preferencia de pago');\r\n      }\r\n    }\r\n  }\r\n};\r\n\r\nexport default api;\r\n"],"names":[],"mappings":";;;AAAA;;AAEA,MAAM,MAAM;IACV,SAAS;QACP,MAAM,QAAO,IAAI;YACf,IAAI;gBACF,8DAA8D;gBAC9D,MAAM,aAAa,MAAM,IAAI,4IAAA,CAAA,cAAU,GAAG,MAAM,CAAC;oBAC/C,MAAM;wBACJ,OAAO,KAAK,GAAG,CAAC,CAAA,OAAQ,CAAC;gCACvB,IAAI,KAAK,EAAE,CAAC,QAAQ;gCACpB,OAAO,KAAK,IAAI;gCAChB,YAAY,KAAK,KAAK;gCACtB,UAAU,KAAK,QAAQ,CAAC,WAAW;4BACrC,CAAC;wBACD,UAAU;4BACR,aAAa,KAAK,sDAAsD;wBAC1E;oBACF;gBACF;gBAEA,yEAAyE;gBACzE,OAAO,WAAW,UAAU;YAC9B,EAAE,OAAO,OAAO;gBACd,QAAQ,KAAK,CAAC,0CAA0C;gBACxD,MAAM,IAAI,MAAM;YAClB;QACF;IACF;AACF;uCAEe"}},
+    {"offset": {"line": 96, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 102, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 106, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 117, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 117, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
