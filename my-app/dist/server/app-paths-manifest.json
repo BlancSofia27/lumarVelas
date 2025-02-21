@@ -1,9 +1,5 @@
 {
-  "/page": "app/page.js",
-  "/user/products/page": "app/user/products/page.js",
-  "/user/products/[id]/page": "app/user/products/[id]/page.js",
   "/api/paymentResume/page": "app/api/paymentResume/page.js",
-  "/api/mercadopago/pagos/route": "app/api/mercadopago/pagos/route.js",
-  "/api/mercadopago/connect/route": "app/api/mercadopago/connect/route.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/api/payment-success/page": "app/api/payment-success/page.js",
+  "/api/mercadopago/connect/route": "app/api/mercadopago/connect/route.js"
 }

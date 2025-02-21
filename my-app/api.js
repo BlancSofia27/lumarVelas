@@ -1,26 +1,40 @@
-import { readFileSync, writeFileSync } from "node:fs";
-import { MercadoPagoConfig, Preference, OAuth } from "mercadopago";
 
+import { MercadoPagoConfig, Preference, OAuth } from "mercadopago";
+import { supabase } from "./utils/supabaseClient";
 export const mercadopago = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN });
 
 const api = {
   user: {
     async fetch() {
-      // Leemos el archivo de la base de datos del usuario
-      const db = readFileSync("db/user.db");
-
-      // Devolvemos los datos como un objeto
-      return JSON.parse(db.toString());
+      // Obtenemos los datos de la tabla 'clients' desde Supabase
+      const { data, error } = await supabase
+        .from('clients')
+        .select('*')
+        .single(); // Asegura que solo devuelvas un objeto
+    
+      if (error) {
+        throw new Error(`Error al obtener los datos del cliente: ${error.message}`);
+      }
+    
+      // Devolvemos los datos del usuario
+      console.log('Datos del cliente:', data);
+      return data;
     },
+    
     async update(data) {
-      // Obtenemos los datos del usuario
-      const db = await api.user.fetch();
-
-      // Extendemos los datos con los nuevos datos
-      const draft = { ...db, ...data };
-
-      // Guardamos los datos
-      writeFileSync("db/user.db", JSON.stringify(draft, null, 2));
+      // Actualizamos los datos en Supabase
+      const { error } = await supabase
+      .from('clients')
+      .update(data)  // Actualiza la fila existente con los datos proporcionados
+      .eq('id', 1);  // Filtra para asegurar que actualizas la fila correcta (en este caso, la fila con id 1)
+  
+      if (error) {
+        throw new Error(`Error al actualizar los datos del cliente: ${error.message}`);
+      }
+  
+      // Si quieres devolver los datos actualizados (opcional)
+      console.log('Datos del cliente actualizados:', data);
+      return data;
     },
     async authorize() {
       // Obtenemos la url de autorización
@@ -51,53 +65,111 @@ const api = {
   },
   message: {
     async list() {
-      // Leemos el archivo de la base de datos de los mensajes
-      const db = readFileSync("db/message.db");
+      const { data, error } = await supabase
+        .from("messages")  // Tu tabla de mensajes en Supabase
+        .select("*")
+        .order("created_at", { ascending: false });  // Puedes ordenar los mensajes por fecha de creación si lo deseas
 
-      // Devolvemos los datos como un array de objetos
-      return JSON.parse(db.toString());
-    },
-    async add(message) {
-      // Obtenemos los mensajes
-      const db = await api.message.list();
-
-      // Si ya existe un mensaje con ese id, lanzamos un error
-      if (db.some((_message) => _message.id === message.id)) {
-        throw new Error("Message already added");
+      if (error) {
+        throw new Error(`Error al obtener los mensajes: ${error.message}`);
       }
-
-      // Agregamos el nuevo mensaje
-      const draft = db.concat(message);
-
-      // Guardamos los datos
-      writeFileSync("db/message.db", JSON.stringify(draft, null, 2));
+      
+      return data;
     },
-    async submit(text) {
-      // Creamos el cliente de Mercado Pago usando el access token del Marketplace
-      const accessToken = process.env.MP_ACCESS_TOKEN;
-      const client = new MercadoPagoConfig({ accessToken});
-      console.log(accessToken)
-      // Creamos la preferencia incluyendo el precio, título y metadata.
-      const preference = await new Preference(client).create({
-        body: {
-          items: [
-            {
-              id: "message",
-              unit_price: 100,
-              quantity: 1,
-              title: "Mensaje de muro",
-            },
-          ],
-          metadata: {
-            text,
-          },
-          marketplace_fee: 5, // Le agregamos ARS 5 de comisión
-        },
-      });
-
-      // Devolvemos el init point (url de pago) para que el usuario pueda pagar
-      return preference.init_point;
+    
+    async add(text) {
+      console.log("Agregando mensaje:", text);
+    
+      // Guardamos solo el texto en la base de datos
+      const { data, error } = await supabase.from("messages").insert([{ text }]);
+    
+      if (error) {
+        throw new Error(`Error al agregar el mensaje: ${error.message}`);
+      }
+    
+      console.log("Mensaje agregado:", data);
+      return data;
     },
+    
+
+async submit(text) {
+  // Consultamos la base de datos de Supabase para obtener el accessToken
+  const { data: clientData, error } = await supabase
+    .from('clients')  // Nombre de la tabla donde está la columna marketplace
+    .select('marketplace')  // Seleccionamos solo la columna marketplace
+    .single();  // Nos aseguramos de obtener solo un registro (si es único)
+
+  if (error) {
+    console.error('Error al obtener el accessToken:', error);
+    throw new Error('No se pudo obtener el accessToken');
+  }
+
+  const accessToken = clientData?.marketplace;  // Usamos el accessToken de la columna marketplace
+  if (!accessToken) {
+    throw new Error('Access token no disponible');
+  }
+
+  const client = new MercadoPagoConfig({ accessToken });
+
+  const items = [
+    {
+      id: "message",
+      unit_price: 70,  // Precio del mensaje
+      quantity: 1,      // Cantidad
+      title: "Mensaje de muro",
+    }
+  ];
+
+  // Creamos la preferencia de pago en Mercado Pago
+  const preference = await new Preference(client).create({
+    body: {
+      items,
+      metadata: { text },
+      marketplace_fee: items[0].unit_price * 0.10,  // 10% como comisión para tu cuenta
+      back_urls: {
+        success: `${process.env.BASE_URL}/api/payment-success?text=${encodeURIComponent(text)}`,
+        failure: `${process.env.BASE_URL}/api/payment-failed`,
+        pending: `${process.env.BASE_URL}/api/payment-pending`,
+      },
+      auto_return: "approved",
+    },
+  });
+
+  return preference.init_point;  // URL para redirigir al usuario a la página de pago
+
+
+      
+      
+      // // Creamos el cliente de Mercado Pago usando el access token del Marketplace
+      // const accessToken = process.env.MP_ACCESS_TOKEN;
+      // const client = new MercadoPagoConfig({ accessToken });
+      // console.log('Access token:', accessToken);
+    
+      // // Definimos el artículo que será comprado (en este caso, un mensaje)
+      // const items = [
+      //   {
+      //     id: "message",        // ID del artículo
+      //     unit_price: 100,      // Precio unitario del mensaje
+      //     quantity: 1,          // Cantidad del artículo
+      //     title: "Mensaje de muro", // Título del artículo
+      //   }
+      // ];
+    
+      // // Creamos la preferencia de Mercado Pago incluyendo el precio, título y metadata
+      // const preference = await new Preference(client).create({
+      //   body: {
+      //     items: items,
+      //     metadata: {
+      //       text, // Metadata con el texto del mensaje
+      //     },
+      //     marketplace_fee: items[0].unit_price * 0.10, // Calculamos el 10% de comisión sobre el precio del artículo
+      //   },
+      // });
+    
+      // // Devolvemos el URL de la preferencia (la URL donde el usuario puede pagar)
+      // return preference.init_point;  // Este es el enlace para que el usuario inicie el pago
+    }
+    
   },
 };
 

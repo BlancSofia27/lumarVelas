@@ -1,8 +1,5 @@
-import { redirect } from "next/navigation";
-import api from "../../../api";
-
-// Utilizamos la revalidación para asegurarnos de que los datos se actualicen en cada visita
-
+import { redirect } from 'next/navigation';
+import api from '../../../api';
 
 export default async function ResumePage() {
   // Obtener los datos dinámicamente dentro del componente
@@ -17,6 +14,7 @@ export default async function ResumePage() {
     const message = formData.get("text");
     const url = await api.message.submit(message);
 
+    // Usar redirect de next/navigation
     redirect(url);
   }
 

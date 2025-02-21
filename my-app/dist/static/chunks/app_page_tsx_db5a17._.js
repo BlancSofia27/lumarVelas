@@ -10,9 +10,9 @@
     "static/chunks/node_modules_framer-motion_dist_es_a75435._.js",
     "static/chunks/node_modules_sweetalert2_dist_sweetalert2_all_b240e9.js",
     "static/chunks/node_modules_@supabase_auth-js_dist_module_9daae1._.js",
-    "static/chunks/node_modules_9699d3._.js",
+    "static/chunks/node_modules_bcace0._.js",
     "static/chunks/components_ui_ui_081119.css",
-    "static/chunks/node_modules_115ad6._.js"
+    "static/chunks/node_modules_b833ac._.js"
   ],
   "source": "dynamic"
 });

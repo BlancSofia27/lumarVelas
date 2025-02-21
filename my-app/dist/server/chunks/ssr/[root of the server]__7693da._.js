@@ -75,6 +75,8 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$externals$5d2f$__$5b$external$5d$__$28$node$3a$fs$2c$__cjs$29$__ = __turbopack_import__("[externals]/ [external] (node:fs, cjs)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/mercadopago/dist/index.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$supabaseClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/utils/supabaseClient.js [app-rsc] (ecmascript)");
+;
 ;
 ;
 const mercadopago = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["MercadoPagoConfig"]({
@@ -83,10 +85,13 @@ const mercadopago = new __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
 const api = {
     user: {
         async fetch () {
-            // Leemos el archivo de la base de datos del usuario
-            const db = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$__$5b$external$5d$__$28$node$3a$fs$2c$__cjs$29$__["readFileSync"])("db/user.db");
+            // Obtenemos los datos de la tabla 'clients' desde Supabase
+            const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$supabaseClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabase"].from('clients').select('*').single(); // `.single()` devuelve un único objeto (suponiendo que solo deseas un registro)
+            if (error) {
+                throw new Error(`Error al obtener los datos del cliente: ${error.message}`);
+            }
             // Devolvemos los datos como un objeto
-            return JSON.parse(db.toString());
+            return data;
         },
         async update (data) {
             // Obtenemos los datos del usuario
@@ -103,7 +108,7 @@ const api = {
             // Obtenemos la url de autorización
             const url = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["OAuth"](mercadopago).getAuthorizationURL({
                 options: {
-                    client_id: ("TURBOPACK compile-time value", "2941962523940955"),
+                    client_id: ("TURBOPACK compile-time value", "6463485720081234"),
                     redirect_uri: `${process.env.APP_URL}/api/mercadopago/connect`
                 }
             });
@@ -114,7 +119,7 @@ const api = {
             // Obtenemos las credenciales del usuario usando el code que obtuvimos de oauth
             const credentials = await new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["OAuth"](mercadopago).create({
                 body: {
-                    client_id: ("TURBOPACK compile-time value", "2941962523940955"),
+                    client_id: ("TURBOPACK compile-time value", "6463485720081234"),
                     client_secret: process.env.MP_CLIENT_SECRET,
                     code,
                     redirect_uri: `${process.env.APP_URL}/api/mercadopago/connect`

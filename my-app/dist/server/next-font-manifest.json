@@ -1,18 +1,9 @@
 {
   "app": {
-    "[project]/app/page": [
-      "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.d1a74dd0.woff2"
-    ],
-    "[project]/app/user/products/page": [
-      "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.d1a74dd0.woff2"
-    ],
-    "[project]/app/user/products/[id]/page": [
-      "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.d1a74dd0.woff2"
-    ],
     "[project]/app/api/paymentResume/page": [
       "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.d1a74dd0.woff2"
     ],
-    "[project]/app/_not-found/page": [
+    "[project]/app/api/payment-success/page": [
       "static/media/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y-s.p.d1a74dd0.woff2"
     ]
   },
