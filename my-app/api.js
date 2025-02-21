@@ -77,11 +77,16 @@ const api = {
       return data;
     },
     
-    async add(text) {
+    async add({ text, id_mercadopago, amount, status }) {
       console.log("Agregando mensaje:", text);
     
-      // Guardamos solo el texto en la base de datos
-      const { data, error } = await supabase.from("messages").insert([{ text }]);
+      // Guardamos el mensaje y los nuevos campos en la base de datos
+      const { data, error } = await supabase.from("messages").insert([{ 
+        text, 
+        id_mercadopago, 
+        amount, 
+        status 
+      }]);
     
       if (error) {
         throw new Error(`Error al agregar el mensaje: ${error.message}`);
@@ -90,6 +95,7 @@ const api = {
       console.log("Mensaje agregado:", data);
       return data;
     },
+    
     
 
 async submit(text) {

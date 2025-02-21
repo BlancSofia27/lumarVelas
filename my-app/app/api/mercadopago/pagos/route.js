@@ -5,6 +5,7 @@ import api, { mercadopago } from "../../../../api";
 
 export async function POST(request) {
   try {
+    console.log("Recibiendo notificación de MercadoPago...");
     // Obtenemos el cuerpo de la petición que incluye información sobre la notificación
     const body = await request.json();
 
@@ -14,7 +15,13 @@ export async function POST(request) {
     // Si se aprueba, agregamos el mensaje
     if (payment.status === "approved") {
       // Obtenemos los datos
-      await api.message.add({ id: payment.id, text: payment.metadata.text });
+      console.log("Agregando mensaje:", payment.metadata.text);
+      await api.message.add({  
+        id_mercadopago: payment.id,  // Guarda el ID del pago  
+        text: payment.metadata.text,  // Guarda el mensaje  
+        amount: payment.transaction_amount,  // Guarda el monto  
+        status: payment.status  // Guarda el estado del pago  
+      });
 
       // Revalidamos la página de inicio para mostrar los datos actualizados
       revalidatePath("/");

@@ -148,12 +148,15 @@ const api = {
             }
             return data;
         },
-        async add (text) {
+        async add ({ text, id_mercadopago, amount, status }) {
             console.log("Agregando mensaje:", text);
-            // Guardamos solo el texto en la base de datos
+            // Guardamos el mensaje y los nuevos campos en la base de datos
             const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$supabaseClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabase"].from("messages").insert([
                 {
-                    text
+                    text,
+                    id_mercadopago,
+                    amount,
+                    status
                 }
             ]);
             if (error) {
